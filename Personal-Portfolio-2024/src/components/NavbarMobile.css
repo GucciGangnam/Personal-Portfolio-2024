@@ -1,0 +1,111 @@
+/* CLOSED NAVBAR */
+.NavbarMobile {
+    background-color: var(--secondary-fill);
+    border-radius: 25px;
+    min-height: 45px;
+
+    /* dimentions */
+    position: absolute;
+    width: calc(100% - 40px);
+    max-height: calc(100vh - 40px);
+    top: 10px;
+    padding: 10px;
+    z-index: 99;
+
+    /* display */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+
+    /* transition */
+    transition: 300ms;
+}
+
+/* NAV BAR TOP SECTION */
+.Nav-top {
+    /* outline: 1px solid orange; */
+    width: 100%;
+    min-height: 45px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--primary-text);
+
+}
+
+.Nav-name {
+    font-size: larger;
+}
+
+.Nav-toggle-BTN-closed {
+    background-color: var(--primary-fill);
+    border: none;
+    padding: 10px;
+    border-radius: 25px;
+    color: var(--primary-text)
+    
+}
+
+.Nav-toggle-BTN-open {
+    outline: 1px solid var(--primary-fill);
+    background-color: inherit;
+    border: none;
+    padding: 10px;
+    border-radius: 25px;
+    color: var(--primary-text)
+}
+
+
+
+/* NAV BAR MAIN SECTION */
+.Nav-main {
+    margin-top: 1px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    transition: 200ms;
+}
+
+.Nav-BTN {
+    /* outline: 1px solid yellow; */
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: 200ms;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.Nav-BTN:hover{ 
+    background-color: var(--background);
+    transition: 200ms;
+}
+
+/* Landscape orientation */
+@media (orientation: portrait) {
+    .Nav-main {
+        /* outline: 1px solid black; */
+        display: flex;
+        max-height: 100%;
+
+    }
+
+    .Nav-BTN {
+        /* outline: 1px solid white; */
+        width: 50%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        
+    }
+}
+
