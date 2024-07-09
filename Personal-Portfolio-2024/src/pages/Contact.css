@@ -1,0 +1,9 @@
+.Contact {}
+
+.Contact .Top-margin {
+    height: 65px;
+}
+
+.Contact .Main {
+    outline: 1px solid blue;
+}

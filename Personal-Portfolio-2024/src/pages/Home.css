@@ -1,0 +1,10 @@
+.Home {}
+
+.Home .Top-margin {
+    height: 65px;
+}
+
+
+.Home .Main-section {
+    outline: 1px solid blue;
+}

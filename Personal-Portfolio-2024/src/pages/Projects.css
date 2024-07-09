@@ -1,0 +1,94 @@
+.Projects{ 
+    color: var(--primary-text);
+
+}
+
+.Projects .Top-margin{ 
+    height: 65px;;
+}
+
+.Projects .Main{ 
+    outline: 1px solid blue;
+    padding: 10px;
+}
+
+/* project container */
+
+.Project-container{
+/* outline: 1px solid pink; */
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+flex-wrap: wrap;
+padding: 10px;
+gap: 10px;
+}
+/* Left */
+.Project-graphics{
+    background-color: var(--element-fill);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+    width: 150px;
+    height: 150px;
+    
+
+}
+
+.Project-title{
+
+}
+
+.Project-image{
+    /* outline: 1px dashed yellow; */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+/* buttons */
+.Project-buttons{
+display: flex;
+justify-content: space-around;
+gap: 5px;
+}
+.Project-buttons .Code-BTN{ 
+    border-radius: 25px;
+    border: none;
+    width: 50px;
+    background-color: inherit;
+    color: var(--primary-text);
+    outline: 1px solid var(--primary-fill);
+}
+.Project-buttons .Live-BTN{ 
+    border-radius: 25px;
+    border: none;
+    padding: 5px;
+    width: 50px;
+    background-color: var(--primary-fill);
+    color: var(--primary-text);
+}
+/* Right */
+.Project-description{
+    /* outline: 1px dashed pink; */
+    width: 400px;
+}
+
+.Project-Technology{
+    padding: 5px;
+    padding-left: 0px;
+    gap: 5px;
+
+}
+.Project-tech-icon{
+    width: 25px;
+    height: 25px;
+    filter: grayscale(100);
+
+
+}

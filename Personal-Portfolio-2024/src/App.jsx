@@ -5,10 +5,13 @@ import { useState, useEffect } from 'react';
 import './App.css'
 // Components 
 import { NavbarMobile } from './components/NavbarMobile'
-//
+// Pages
+import { Home } from './pages/Home';
+import { CV } from './pages/CV';
+import { Projects } from './pages/Projects';
+import { Contact } from './pages/Contact';
 
 // COMPONENT 
-
 function App() {
 
   // DARK MODE 
@@ -24,13 +27,18 @@ function App() {
     }
   }, [isDarkMode]);
 
-  // navBar status 
+  // NAV BAR STATUS 
   const [isNavOpen, setIsNavOpen] = useState(false);
+  // HANDLE CHANEG PAGE
+  const [currentPage, setCurrentPage] = useState("Home")
 
   return (
     <div className='App'>
-      <NavbarMobile isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} toggleTheme={toggleTheme}/>
-      
+      <NavbarMobile isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} toggleTheme={toggleTheme} setCurrentPage={setCurrentPage} />
+      {/* <Home /> */}
+      {/* <CV/> */}
+      <Projects/>
+      {/* <Contact/> */}
     </div>
   )
 }
