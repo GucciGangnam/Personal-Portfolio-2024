@@ -1,30 +1,50 @@
-.Projects{ 
+.Projects {
     color: var(--primary-text);
 
+
 }
 
-.Projects .Top-margin{ 
-    height: 65px;;
+.Projects .Top-margin {
+    height: 65px;
+    ;
 }
 
-.Projects .Main{ 
-    outline: 1px solid blue;
+.Projects .Main {
+    /* outline: 1px solid blue; */
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10vw;
+
 }
 
 /* project container */
 
-.Project-container{
-/* outline: 1px solid pink; */
-display: flex;
-justify-content: space-evenly;
-align-items: center;
-flex-wrap: wrap;
-padding: 10px;
-gap: 10px;
+.Project-container {
+    /* outline: 1px solid pink; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 10px;
+
 }
+
+.Project-container-reverse {
+    /* outline: 1px solid pink; */
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 10px;
+
+}
+
 /* Left */
-.Project-graphics{
+.Project-graphics {
     background-color: var(--element-fill);
     border-radius: 10px;
     display: flex;
@@ -34,15 +54,13 @@ gap: 10px;
     padding: 10px;
     width: 150px;
     height: 150px;
-    
+
 
 }
 
-.Project-title{
+.Project-title {}
 
-}
-
-.Project-image{
+.Project-image {
     /* outline: 1px dashed yellow; */
     width: 50px;
     height: 50px;
@@ -51,13 +69,15 @@ gap: 10px;
     align-items: center;
 
 }
+
 /* buttons */
-.Project-buttons{
-display: flex;
-justify-content: space-around;
-gap: 5px;
+.Project-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 5px;
 }
-.Project-buttons .Code-BTN{ 
+
+.Project-buttons .Code-BTN {
     border-radius: 25px;
     border: none;
     width: 50px;
@@ -65,7 +85,8 @@ gap: 5px;
     color: var(--primary-text);
     outline: 1px solid var(--primary-fill);
 }
-.Project-buttons .Live-BTN{ 
+
+.Project-buttons .Live-BTN {
     border-radius: 25px;
     border: none;
     padding: 5px;
@@ -73,22 +94,24 @@ gap: 5px;
     background-color: var(--primary-fill);
     color: var(--primary-text);
 }
+
 /* Right */
-.Project-description{
+.Project-description {
     /* outline: 1px dashed pink; */
     width: 400px;
+    max-width: 500px;
 }
 
-.Project-Technology{
+.Project-Technology {
     padding: 5px;
     padding-left: 0px;
+    display: flex;
     gap: 5px;
 
 }
-.Project-tech-icon{
+
+.Project-tech-icon {
     width: 25px;
     height: 25px;
     filter: grayscale(100);
-
-
 }

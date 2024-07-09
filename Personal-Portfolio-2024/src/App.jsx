@@ -35,10 +35,11 @@ function App() {
   return (
     <div className='App'>
       <NavbarMobile isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} toggleTheme={toggleTheme} setCurrentPage={setCurrentPage} />
-      {/* <Home /> */}
-      {/* <CV/> */}
-      <Projects/>
-      {/* <Contact/> */}
+
+      {currentPage === "Home" && <Home />}
+      {currentPage === "CV" && <CV />}
+      {currentPage === "Projects" && <Projects />}
+      {currentPage === "Contact" && <Contact />}
     </div>
   )
 }

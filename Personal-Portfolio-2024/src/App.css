@@ -10,10 +10,10 @@
 }
 
 [data-theme='dark'] {
-  --background: #d3d3d3;
+  --background: #ffffff;
   --primary-fill: #ff7f29;
   --secondary-fill: #9b9b9b;
-  --element-fill: #ff7f2930;
+  --element-fill: #dc8952;
 
   --primary-text: #000000;
   --secondary-text: #A6A6A6;
@@ -25,6 +25,8 @@
 .App{ 
   background-color: var(--background);
   padding: 10px;
-  height: calc(100vh - 20px);
+  min-height: calc(100vh - 20px);
   font-family: sans-serif;
+
+
 }

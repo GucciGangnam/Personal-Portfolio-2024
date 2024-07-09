@@ -69,6 +69,9 @@ export const NavbarMobile = ({ isNavOpen, setIsNavOpen, toggleTheme, setCurrentP
                                 strokeWidth="1.0"
                                 strokeLinecap="round" /> </g>
                     </svg>
+                    <div className="Nav-BTN-name">
+                        Home
+                    </div>
                 </div>
 
                 <div
@@ -113,6 +116,9 @@ export const NavbarMobile = ({ isNavOpen, setIsNavOpen, toggleTheme, setCurrentP
                                 strokeWidth="1.0"
                                 strokeLinecap="round" /> </g>
                     </svg>
+                    <div className="Nav-BTN-name">
+                        CV
+                    </div>
                 </div>
 
                 <div
@@ -144,6 +150,9 @@ export const NavbarMobile = ({ isNavOpen, setIsNavOpen, toggleTheme, setCurrentP
                             <rect x="0" y="0" width="36" height="36"
                                 fillOpacity="0" /> </g>
                     </svg>
+                    <div className="Nav-BTN-name">
+                        Projects
+                    </div>
                 </div>
 
                 <div
@@ -161,6 +170,9 @@ export const NavbarMobile = ({ isNavOpen, setIsNavOpen, toggleTheme, setCurrentP
                             strokeLinecap="round"
                             strokeLinejoin="round" /> </g>
                     </svg>
+                    <div className="Nav-BTN-name">
+                        Contact
+                    </div>
                 </div>
             </div>
 
