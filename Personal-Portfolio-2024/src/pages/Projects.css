@@ -1,5 +1,5 @@
 .Projects {
-    color: var(--primary-text);
+    color: var(--secondary-text);
 
 
 }
@@ -58,7 +58,9 @@
 
 }
 
-.Project-title {}
+.Project-title {
+    color: var(--primary-text);
+}
 
 .Project-image {
     /* outline: 1px dashed yellow; */
@@ -75,6 +77,7 @@
     display: flex;
     justify-content: space-around;
     gap: 5px;
+    cursor: pointer;
 }
 
 .Project-buttons .Code-BTN {
@@ -84,6 +87,7 @@
     background-color: inherit;
     color: var(--primary-text);
     outline: 1px solid var(--primary-fill);
+    cursor: pointer;
 }
 
 .Project-buttons .Live-BTN {
@@ -93,6 +97,7 @@
     width: 50px;
     background-color: var(--primary-fill);
     color: var(--primary-text);
+    cursor: pointer;
 }
 
 /* Right */

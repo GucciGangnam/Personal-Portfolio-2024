@@ -1,4 +1,6 @@
-.Home {}
+.Home {
+    overflow: hidden;
+}
 
 .Home .Top-margin {
     height: 65px;
@@ -83,7 +85,22 @@
     cursor: pointer;
 }
 
+/* QR */
+.Desktop-only{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
+
+}
+
+
+.Mobile-prompt{ 
+    color: var(--secondary-text);
+
+}
+/* MEDALS */
 .Home-medals {
     /* outline: 1px solid orange; */
     display: flex;

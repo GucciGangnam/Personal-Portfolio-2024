@@ -14,6 +14,27 @@ import { Contact } from './pages/Contact';
 // COMPONENT 
 function App() {
 
+  const [isMobile, setIsMobile] = useState(null)
+  useEffect(() => {
+    // Function to detect device type based on user agent
+    const detectDeviceType = () => {
+      const userAgent = navigator.userAgent;
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+      
+      if (isMobile) {
+        console.log("Client is on a mobile device.");
+        setIsMobile(true)
+      } else {
+        console.log("Client is on a desktop device.");
+        setIsMobile(false)
+      }
+    };
+    // Call the function initially
+    detectDeviceType();
+    // No need for resize listener in this method
+  }, []);
+
+
   // DARK MODE 
   const [isDarkMode, setIsDarkMode] = useState(false);
   const toggleTheme = () => {
@@ -34,9 +55,9 @@ function App() {
 
   return (
     <div className='App'>
-      <NavbarMobile isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} toggleTheme={toggleTheme} setCurrentPage={setCurrentPage} />
+      <NavbarMobile isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} toggleTheme={toggleTheme} isDarkMode={isDarkMode} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-      {currentPage === "Home" && <Home />}
+      {currentPage === "Home" && <Home isMobile={isMobile} />}
       {currentPage === "CV" && <CV />}
       {currentPage === "Projects" && <Projects />}
       {currentPage === "Contact" && <Contact />}

@@ -1,9 +1,99 @@
-.Contact {}
-
-.Contact .Top-margin {
-    height: 65px;
+.Contact {
+    margin-top: 75px;
+    /* outline: 1px solid blue; */
+    height: calc(100vh - 95px);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
 }
 
-.Contact .Main {
-    outline: 1px solid blue;
+.Contact .GIT{ 
+    font-size: 3em;
+    color: var(--secondary-text);
+}
+
+.Contact form{ 
+    /* outline: 1px solid yellow; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+    width: 80%;
+
+}
+
+.Contact form input{ 
+    width: 80%;
+    max-width: 400px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--secondary-fill);
+    color: var(--primary-text);
+    font-size: 16px;
+}
+
+.Contact form input:focus{ 
+    outline: 2px solid var(--primary-fill);
+}
+
+.Contact textarea{ 
+    width: 80%;
+    max-width: 400px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--secondary-fill);
+    user-select: none; /* Disable text selection */
+    resize: none; /* Disable resizing */
+    color: var(--primary-text);
+    font-size: 16px;
+}
+.Contact form textarea:focus{ 
+    outline: 2px solid var(--primary-fill);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--background); /* Change this to your desired placeholder color */
+}
+
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Base styles for inputs */
+#input1, #input2, #input3 {
+    opacity: 0;
+    transition: opacity 300ms;
+}
+
+/* Immediate fade-in for input1 */
+#input1 {
+    animation: fadeIn 300ms 100ms forwards;
+}
+
+/* Fade-in for input2 after 500ms */
+#input2 {
+    animation: fadeIn 400ms 200ms forwards;
+}
+
+/* Fade-in for input3 after 1000ms */
+#input3 {
+    animation: fadeIn 500ms 300ms forwards;
+}
+
+.Contact form button { 
+    background-color: var(--primary-fill);
+    border: none;
+    padding: 10px;
+    border-radius: 25px;
+    color: var(--primary-text);
+    cursor: pointer;
 }
