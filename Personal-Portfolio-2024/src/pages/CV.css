@@ -33,7 +33,7 @@
 }
 
 .CV-nav .Dot.active {
-    border: 2px solid var(--primary-fill);
+    outline: 2px solid var(--primary-fill);
 }
 
 .CV .Top-margin {
@@ -180,12 +180,20 @@
     max-width: 64px;
 }
 
-.CV-page-5-content {
-        outline: 1px solid orange;
-        width: 99%;
-        height: calc(100% - 60px);
-        justify-content: center;
-        align-items: center;
+.CV-page-5-content { 
+    /* outline: 1px solid orange; */
+    width: 99%;
+    min-height: calc(100% - 170px);
+    display: flex;
+    color: var(--secondary-text);
+}
+
+.CV-page-5-content img{ 
+width: 25px;
+height: 25px;
+border: 2px solid var(--secondary-fill);
+border-radius: 50%;
+margin: 10px;
 }
 
 @keyframes typing {

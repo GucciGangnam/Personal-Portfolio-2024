@@ -2,6 +2,28 @@ import React, { useState, useEffect, useRef } from 'react';
 import "./CV.css";
 
 export const CV = () => {
+
+    //GPT EFFECT
+    const page5Text = "Confident in my teaching ability, based on exceptional feedback, I wanted to challenge myself and learn something new.  My admiration for tech and creativity led me to learning Full Stack Web development.  I faced the biggest learning curve of my life trying to self teach, but persisted and eventually found the Odin Project.  The Odin Project is an open sourced, deeply comprehensive curriculum of web development from scratch.  With a solid syllabus to follow, I moved to Ho Chi Minh City and started working part time so I could focus on writing code.";
+    const [page5code, setPage5Code] = useState('');
+    const GPTeffect = () => {
+        let newString = '';
+        const updateString = (i) => {
+            if (i < page5Text.length) {
+                newString += page5Text[i];
+                setPage5Code(newString);
+                let randomNumber = Math.floor(Math.random() * 10) + 1;
+                if (randomNumber % 5 === 0) {
+                    randomNumber *= 10;
+                }
+                setTimeout(() => updateString(i + 1), randomNumber);
+            }
+        };
+        updateString(0);
+    };
+
+
+
     const scrollableDivRef = useRef(null);
     const [lastScrollTop, setLastScrollTop] = useState(0);
     const [isNavVisible, setIsNavVisible] = useState(false);
@@ -46,6 +68,9 @@ export const CV = () => {
                     setActivePage(parseInt(page));
                     console.log(page)
                     setPageInVP(page)
+                    if (page == 5) {
+                        GPTeffect()
+                    }
                 }
             });
         }, observerOptions);
@@ -158,16 +183,13 @@ export const CV = () => {
                     <div className='CV-date'>
                         2022
                     </div>
+                    <img src='Code.png'/>
                     <div className='CV-page-5-content'>
+                        <img src='Avatar.png' />
                         {pageInVP == 5 && (
-                            <>
-                                <p>Confident in my teaching ability, based on exceptional feedback, I wanted to challange myself and learn somethign new.</p>
-                                <p>My admiration for tech and creativity led me to learning Full Stack Web development.</p>
-                                <p>I faced the biggest learnign curve of my life trying to self teach, but persisted and eventually found the Odin Project.</p>
-                                <p>The Odin Project is an open sourced, deeply comprehensive curriculum of web development from scratch.</p>
-                                <p> with a solid syllabus to follow, I moved to Ho Chi Minh City Started working part time so I could focus on writing code.</p>
-                            </>
+                            <p>{page5code}</p>
                         )}
+
                     </div>
                 </div>
 
