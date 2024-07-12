@@ -28,7 +28,7 @@ export const Home = ({ isMobile }) => {
                     </div>
                     <div className="Devider"></div>
                     <div className="Info">
-                        I started learning to code in 2022 along side the Odin Project and have been building projects every day since. My portfolio showcases my journey and the skills I’ve developed. I strive to and succeed in being a top performer in everythign I do. I code every single day and I take pictures when I can. Check out both sides of my life here.
+                    I started learning to code in 2022 along side the Odin Project and have been building projects every day since. My portfolio showcases my journey and the skills I’ve developed. I strive to and succeed in being a top performer in everything I do. I code every single day and I take pictures when I can. Check out both sides of my life here.
                     </div>
                     <div className="Links">
                         <img

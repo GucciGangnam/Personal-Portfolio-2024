@@ -1,38 +1,44 @@
 .Projects {
     color: var(--secondary-text);
+    outline: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 5vw;
+    width: calc(100% - 20px);
+
 
 
 }
 
 .Projects .Top-margin {
-    height: 65px;
-    ;
+    height: 50px;
 }
 
-.Projects .Main {
-    /* outline: 1px solid blue; */
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10vw;
 
-}
+
+
+
+
+
 
 /* project container */
 
 .Project-container {
-    /* outline: 1px solid pink; */
+    /* outline: 1px dashed pink; */
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     padding: 10px;
     gap: 10px;
-
+    width: calc(100% - 20px);
+    max-width: 900px;
 }
 
 .Project-container-reverse {
-    /* outline: 1px solid pink; */
+    /* outline: 1px dashed pink; */
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
@@ -40,8 +46,22 @@
     flex-wrap: wrap;
     padding: 10px;
     gap: 10px;
-
+    width: calc(100% - 20px);
+    max-width: 900px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Left */
 .Project-graphics {

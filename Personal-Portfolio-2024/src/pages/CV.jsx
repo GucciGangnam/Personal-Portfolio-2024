@@ -36,14 +36,15 @@ export const CV = () => {
         const scrollHeight = scrollableDivRef.current.scrollHeight;
         const clientHeight = scrollableDivRef.current.clientHeight;
 
-        if (scrollTop + clientHeight >= scrollHeight) {
+        if (scrollTop <= 0) {
+            setIsNavVisible(false);  // Hide nav when at the top
+        } else if (scrollTop + clientHeight >= scrollHeight) {
             setIsNavVisible(false);  // Hide nav when at the bottom
         } else if (scrollTop > lastScrollTop) {
             setIsNavVisible(true);  // Show nav when scrolling down
         } else {
             setIsNavVisible(false);  // Hide nav when scrolling up
         }
-
         setLastScrollTop(scrollTop);
     };
 
@@ -69,7 +70,7 @@ export const CV = () => {
                     console.log(page)
                     setPageInVP(page)
                     if (page == 5) {
-                        GPTeffect()
+                        GPTeffect();
                     }
                 }
             });
@@ -122,7 +123,7 @@ export const CV = () => {
                     <div className='CV-page-2-content'>
                         <img src='/Bank.png' />
                         <div className='CV-Text-2'>
-                            After graduating highschool, following a unique oportunity, I decided to persue a position in the sought-after Lloyds Banking Group Appreticeship Programme. Sucessfully competeing with over 3000 aplicants my skills were noticed and I spent the next few years managing small to medium compleity projects and assisting on some large flagship projects within the group along side studying for my NVQ Diploma in Project Management.
+                            After graduating 6th Form, following a unique opportunity, I decided to pursue a position in the sought-after Lloyds Banking Group Apprenticeship Programme. Successfully competing with over 3000 applicants my skills were noticed and I spent the next few years managing small to medium complexity projects and assisting on some large flagship projects within the group along side studying for my NVQ Diploma in Project Management.
                         </div>
                     </div>
                 </div>
@@ -135,20 +136,20 @@ export const CV = () => {
                         <div className='grid'>
                             <img src='/Earth.png' />
                         </div>
-                        <div className='grid'>In 2017, after a top 5% strong performance review and a promotion offer, I decided to leave the group and book a one-way ticket to Bangkok with the goal of workign in Australia where I held down a number of jobs.</div>
+                        <div className='grid'>In 2017, after a top 5% strong performance review and a promotion offer, I decided to leave the group and book a one-way ticket to Bangkok with the goal of working in Australia where I held down a number of jobs.</div>
                         <div className='grid'>
                             <img src='/Badge.png' />
                         </div>
-                        <div className='grid'>With a strong office background I was able to quickly land multiple temperary office jobs.</div>
+                        <div className='grid'>With a strong office background I was able to quickly land multiple temporary office jobs.</div>
                         <div className='grid'>
                             <img src='/Tractor.png' />
                         </div>
-                        <div className='grid'>To gain my second year visa I had to complete 88 days of 'regional work' where I quickly worked up from picking fruit to operating heavy agriculturay machinary and beoming
+                        <div className='grid'>To gain my second year visa I completed ‘regional work' where I quickly worked up from picking fruit to operating heavy agricultural machinery and becoming
                             <br />"The quickest learner and best tractor chaser I have ever seen" - Trevor</div>
                         <div className='grid'>
                             <img src='/Worker.png' />
                         </div>
-                        <div className='grid'>I finished off my life in Australia with a construction role contributing to the creation of the Syndey Light Rail netwrok.</div>
+                        <div className='grid'>I finished off my life in Australia with a construction role contributing to the creation of the Sydney Light Rail network.</div>
                     </div>
                 </div>
 
@@ -174,7 +175,7 @@ export const CV = () => {
                             <img src='/Teacher.png' />
                         </div>
                         <div className='CV-4-section'>
-                            I began working as an English teacher at a local school in the area and after quickly mastring my skills I was offered a role at a prestigious international school and built a wonderful life for myself.
+                            I began working as an English teacher at a local school in the area and after quickly mastering my skills I was offered a role at a prestigious international school and built a wonderful life for myself.
                         </div>
                     </div>
                 </div>
@@ -183,13 +184,12 @@ export const CV = () => {
                     <div className='CV-date'>
                         2022
                     </div>
-                    <img src='Code.png'/>
+                    <img src='Code.png' />
                     <div className='CV-page-5-content'>
                         <img src='Avatar.png' />
                         {pageInVP == 5 && (
                             <p>{page5code}</p>
                         )}
-
                     </div>
                 </div>
 
@@ -198,6 +198,16 @@ export const CV = () => {
                         Now
                     </div>
                     <div className='CV-page-6-content'>
+                        <div className='text'>
+                            In 2024 I moved to Hanoi where I have been coding projects full time and capturing some of the world's most breathtaking scenery on film in my spare time.
+                            <br />
+                            <br />
+                            I love creating and I have walked the path of web development in complete solitude, but I want to create and build and grow something with other people who are passionate about the same thing. I love problem solving and banging heads to design and execute elegant solutions.
+                        </div>
+                        <div className='Download-CV'>
+                            <p>Click here to download my full resume</p>
+                            <button>Download</button>
+                        </div>
 
                     </div>
                 </div>
