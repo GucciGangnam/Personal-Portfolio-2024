@@ -202,7 +202,7 @@ export const CV = () => {
                             In 2024 I moved to Hanoi where I have been coding projects full time and capturing some of the world's most breathtaking scenery on film in my spare time.
                             <br />
                             <br />
-                            I love creating and I have walked the path of web development in complete solitude, but I want to create and build and grow something with other people who are passionate about the same thing. I love problem solving and banging heads to design and execute elegant solutions.
+                            I love creating and I have walked the path of web development in complete solitude, but I want to create, build and grow something with other people who are passionate about the same thing. I love problem solving and banging heads to design and execute elegant solutions.
                         </div>
                         <div className='Download-CV'>
                             <p>Click here to download my full resume</p>

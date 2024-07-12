@@ -1,6 +1,6 @@
 .Projects {
     color: var(--secondary-text);
-    outline: 1px solid blue;
+    /* outline: 1px solid blue; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +35,10 @@
     gap: 10px;
     width: calc(100% - 20px);
     max-width: 900px;
+    opacity: 1;
+    transition: 1000ms;
 }
+
 
 .Project-container-reverse {
     /* outline: 1px dashed pink; */
@@ -48,7 +51,10 @@
     gap: 10px;
     width: calc(100% - 20px);
     max-width: 900px;
+    opacity: 1;
+    transition: 1000ms;
 }
+
 
 
 

@@ -7,9 +7,6 @@ import "./Projects.css"
 
 //COMPONENT 
 export const Projects = () => {
-const myRef = useRef(); 
-
-
 
 
     return (
@@ -17,7 +14,7 @@ const myRef = useRef();
             <div className="Top-margin">
             </div>
 
-            <div ref={myRef} className="Project-container">
+            <div className="Project-container">
                 <div className="Project-graphics">
                     <div className="Project-title">
                         Kiko (Mobile)
