@@ -199,28 +199,6 @@
     max-width: 64px;
 }
 
-.CV-page-5-content {
-    /* outline: 1px solid orange; */
-    width: 99%;
-    max-width: 800px;
-    min-height: calc(100% - 170px);
-    display: flex;
-    color: var(--secondary-text);
-}
-
-.CV-page-5-content img {
-    width: 25px;
-    height: 25px;
-    border: 2px solid var(--secondary-fill);
-    border-radius: 50%;
-    margin: 10px;
-}
-
-.CV-page-5-content p {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1em;
-
-}
 
 .CV-page-6-content {
     width: 99%;
@@ -251,4 +229,49 @@ max-width: 600px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+
+/* CV PAGE 5 */
+/* font-family: 'Courier New', Courier, monospace; */
+
+.CV-page-5{
+    outline: 1px solid red;
+    height: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    overflow: scroll;
+    color: var(--secondary-text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Chat-container{ 
+    width: 90%;
+    max-width: 600px;
+    outline: 1px dashed pink;
+    height: calc(100% - 230px);
+    display: flex;
+    flex-direction: column;
+}
+
+.Chat-window{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.Message-container{ 
+    display: flex;
+    gap: 10px;
+}
+.Message-image{ 
+width: 25px;
+height: 25px;
+border: 2px solid var(--secondary-fill);
+border-radius: 25px;
+}
+.Input-container{
+
 }

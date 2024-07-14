@@ -14,7 +14,7 @@ export const CV = () => {
                 setPage5Code(newString);
                 let randomNumber = Math.floor(Math.random() * 10) + 1;
                 if (randomNumber % 5 === 0) {
-                    randomNumber *= 10;
+                    randomNumber *= 5;
                 }
                 setTimeout(() => updateString(i + 1), randomNumber);
             }
@@ -94,7 +94,6 @@ export const CV = () => {
 
             <div className="Top-margin"></div>
             <div ref={scrollableDivRef} className="Main">
-
 
                 <div className="CV-page" data-page="1">
                     <div className='CV-date'>
@@ -180,16 +179,25 @@ export const CV = () => {
                     </div>
                 </div>
 
-                <div className="CV-page" data-page="5">
+                <div className="CV-page-5" data-page="5">
                     <div className='CV-date'>
                         2022
                     </div>
                     <img src='Code.png' />
-                    <div className='CV-page-5-content'>
-                        <img src='Avatar.png' />
-                        {pageInVP == 5 && (
-                            <p>{page5code}</p>
-                        )}
+                    <div className='Chat-container'>
+                        <div className='Chat-window'>
+                            <div className='Message-container'>
+                                <img
+                                className='Message-image'
+                                src='/Avatar.png'/>
+                                <div className='Message-content'>
+                                {page5code}
+                                </div>
+                            </div>
+                        </div>
+                        <div className='Input-container'>
+                            ic
+                        </div>
                     </div>
                 </div>
 
