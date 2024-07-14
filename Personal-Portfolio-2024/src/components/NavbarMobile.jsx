@@ -22,6 +22,7 @@ export const NavbarMobile = ({ isNavOpen, setIsNavOpen, toggleTheme, isDarkMode,
             className="NavbarMobile"
             style={{
                 height: isNavOpen ? "calc(100vh - 40px)" : "45px",
+                position: isNavOpen ? "fixed" : "",
             }}
         >
             <div className="Nav-top">
