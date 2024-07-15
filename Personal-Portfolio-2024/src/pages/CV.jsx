@@ -58,10 +58,7 @@ export const CV = () => {
         };
     }, []);
 
-
-
-
-
+    // CONVERSATION OBJECT
     const [conversation, setConversation] = useState(
         [
             {
@@ -125,7 +122,6 @@ export const CV = () => {
             ...prevState,
             { avatar: "/Avatar.png", message: "" }
         ]);
-
         let newString = '';
         const updateString = (i) => {
             if (i < responseText.length) {
@@ -147,8 +143,83 @@ export const CV = () => {
         updateString(0);
     };
 
+    const [userInput, setUserInput] = useState("")
+    const handleUserInputChange = (e) => {
+        setUserInput(e.target.value)
+    }
+
+    const handleAskGPT = () => {
+        setConversation(prevState => [
+            ...prevState,
+            { avatar: "/User.png", message: userInput }
+        ])
+        fetchGPTResponse(userInput);
+        setUserInput("");
+    }
 
 
+
+
+    // FETCH RESONSE HERE
+    const [awaitingResponse, setAwaitingResponse] = useState(false)
+    const [geminiError, setGeminiError] = useState(false)
+    const GeminiAPIKey = import.meta.env.VITE_GEMINI_API_KEY;
+    // Define the request body
+    const fetchGPTResponse = async (prompt) => {
+        setGeminiError(false);
+        setAwaitingResponse(true);
+        const requestBody = {
+            contents: [
+                {
+                    role: "user",
+                    parts: [{ text: prompt }]
+                }
+            ]
+        };
+        // Make the API call
+        try {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${GeminiAPIKey}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(requestBody)
+            });
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            const data = await response.json();
+            setConversation(prevState => [
+                ...prevState,
+                { avatar: "/Avatar.png", message: "" }
+            ])
+            let responseText = data.candidates[0].content.parts[0].text
+            let newString = '';
+        const updateString = (i) => {
+            if (i < responseText.length) {
+                newString += responseText[i];
+                setConversation(prevState => {
+                    const newConversation = [...prevState];
+                    newConversation[newConversation.length - 1].message = newString;
+                    return newConversation;
+                });
+                let randomNumber = Math.floor(Math.random() * 10) + 1;
+                if (randomNumber % 5 === 0) {
+                    randomNumber *= 5;
+                }
+                setTimeout(() => updateString(i + 1), randomNumber);
+            } else {
+                setHandToGPT(true)
+            }
+        };
+        updateString(0);
+        } catch (error) {
+            setGeminiError(true)
+            console.error("There was a problem with the API request:", error);
+        } finally { 
+            setAwaitingResponse(false);
+        }
+    }
 
 
 
@@ -255,58 +326,52 @@ export const CV = () => {
                     <div className='Chat-container'>
                         <div className='Chat-window'>
 
-                            <div className='Message-container'>
-                                <img
-                                    className='Message-image'
-                                    src={conversation[0].avatar} />
-                                <div className='Message-content'>
-                                    {conversation[0].message}
-                                </div>
-                            </div>
-
-                            {conversation[1] && (
-                                <div className='Message-container'>
+                            {conversation.map((message, index) => (
+                                <div className='Message-container' key={index}>
                                     <img
                                         className='Message-image'
-                                        src={conversation[1].avatar} />
+                                        src={message.avatar} />
                                     <div className='Message-content'>
-                                        {conversation[1].message}
+                                        {message.message}
                                     </div>
                                 </div>
+                            ))}
+
+                            {/* IF WAITING FOR A RESPONSE then say "Thinking" */}
+                            {awaitingResponse && ( 
+                                <>Thinking...</>
+                            )}
+                            {/* IF ERROR IN RESPONSE then say sorry */}
+                            {geminiError && ( 
+                                <> I'm really sorry.  There's been an issue with the response</>
                             )}
 
 
-                            {conversation[2] && (
-                                <div className='Message-container'>
-                                    <img
-                                        className='Message-image'
-                                        src={conversation[2].avatar} />
-                                    <div className='Message-content'>
-                                        {conversation[2].message}
-                                    </div>
-                                </div>
-                            )}
 
                         </div>
 
 
                         {handedToGPT ? (
                             <div className='Input-container'>
-                                <input />
+                                <input
+                                    placeholder='Ask me anything'
+                                    value={userInput}
+                                    onChange={handleUserInputChange} />
                                 <button
-                                className='Go3'>Go</button>
+                                    className='Go3'
+                                    onClick={handleAskGPT}>Go</button>
                             </div>
                         ) : (
                             <div className='Input-container'>
                                 <div className='Dummy-input'>{dummyInputText}</div>
                                 {forcedMessageAvailable ? (
                                     <button
-                                    className='Go2'
+                                        className='Go2'
                                         onClick={handleFakeMessage}
                                     >Go</button>
                                 ) : (
                                     <button
-                                    className='Go1'
+                                        className='Go1'
                                     >Go</button>
                                 )}
 

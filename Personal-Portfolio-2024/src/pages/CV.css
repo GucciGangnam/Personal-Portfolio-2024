@@ -236,7 +236,7 @@ max-width: 600px;
 /* font-family: 'Courier New', Courier, monospace; */
 
 .CV-page-5{
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
     height: 100%;
     scroll-snap-align: start;
     scroll-snap-stop: always;
@@ -325,7 +325,7 @@ border: none;
 padding: 10px;
 border-radius: 25px;
 color: var(--secondary-text);
-animation: glow 1s ease-in-out;
+animation: glow 2s ease-in-out;
 }
 
 .Go3{ 
