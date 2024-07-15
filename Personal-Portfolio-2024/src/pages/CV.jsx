@@ -129,7 +129,7 @@ export const CV = () => {
         }, 1000)
     };
     const forcedResponse = () => {
-        let responseText = "During my time with the Odin Project, I gained foundational knowledge and hands-on experience across the full stack of web development. I honed my skills in HTML, CSS, and JavaScript for building responsive and interactive front-end interfaces. On the back end, I delved into server-side programming with Node.js, Express.js, and MongoDB, learning to create RESTful APIs and manage databases. Throughout various projects, I developed a strong understanding of version control using Git and GitHub, as well as deploying applications on cloud platforms. My learning emphasised problem-solving, debugging, and a disciplined approach to coding practices, preparing me to contribute effectively to dynamic development teams."
+        let responseText = "During my time with the Odin Project, I gained foundational knowledge and hands-on experience across the full stack of web development. I honed my skills in HTML, CSS, and JavaScript for building responsive and interactive front-end interfaces. On the back end, I delved into server-side programming with Node.js, Express.js, and MongoDB, learning to create RESTful APIs and manage databases. Throughout various projects, I developed a strong understanding of version control using Git and GitHub, as well as deploying applications on cloud platforms. My learning emphasised problem-solving, debugging, and a disciplined approach to coding practices, preparing me to contribute effectively to dynamic development teams. Go ahead and ask me something!"
         setConversation(prevState => [
             ...prevState,
             { avatar: "/Avatar.png", message: "" }
