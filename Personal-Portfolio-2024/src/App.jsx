@@ -60,7 +60,7 @@ function App() {
       {currentPage === "Home" && <Home isMobile={isMobile} />}
       {currentPage === "CV" && <CV />}
       {currentPage === "Projects" && <Projects />}
-      {currentPage === "Contact" && <Contact />}
+      {currentPage === "Contact" && <Contact setCurrentPage={setCurrentPage} />}
     </div>
   )
 }

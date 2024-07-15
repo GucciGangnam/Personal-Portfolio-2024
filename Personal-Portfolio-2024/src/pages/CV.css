@@ -292,7 +292,7 @@ border-radius: 25px;
     background: var(--secondary-fill);
     font-size: 16px;
     color: var(--secondary-text);
-    animation: glow 1s ease-in-out;
+    animation: glow 2s ease-in-out;
 }
 .Input-container input:focus{ 
     outline: 2px solid var(--primary-fill);
@@ -324,7 +324,7 @@ border: none;
 padding: 10px;
 border-radius: 25px;
 color: var(--secondary-text);
-animation: glow 2s ease-in-out;
+animation: glow 3s ease-in-out;
 }
 
 .Go3{ 

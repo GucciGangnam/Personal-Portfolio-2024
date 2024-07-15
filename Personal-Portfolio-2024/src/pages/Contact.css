@@ -11,6 +11,7 @@
 .Contact .GIT{ 
     font-size: 3em;
     color: var(--secondary-text);
+    text-align: center;
 }
 
 .Contact form{ 
@@ -90,6 +91,72 @@ textarea::placeholder {
 }
 
 .Contact form button { 
+    background-color: var(--primary-fill);
+    border: none;
+    padding: 10px;
+    border-radius: 25px;
+    color: var(--primary-text);
+    cursor: pointer;
+}
+
+
+/* sending bars */
+.Sending{ 
+    /* outline: 1px solid pink; */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    color: var(--secondary-text);
+    font-size: 3em;
+}
+
+.BigBar{
+    background: var(--secondary-fill);
+    height: 10px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 25px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 10px;
+}
+
+.LittleBar{
+    background: var(--primary-fill);
+    height: 3px;
+    width: 100%;
+    border-radius: 25px;
+    animation: sending 25s infinite;
+}
+
+@keyframes sending {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* SENT */
+
+.Sent{ 
+    height: 100%;
+    color: var(--secondary-text);
+    font-size: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.Sent button{ 
     background-color: var(--primary-fill);
     border: none;
     padding: 10px;
