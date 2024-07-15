@@ -162,11 +162,13 @@ export const CV = () => {
 
     // FETCH RESONSE HERE
     const [awaitingResponse, setAwaitingResponse] = useState(false)
+    const [gptInEffect, setGptInEffect] = useState(false)
     const [geminiError, setGeminiError] = useState(false)
     const GeminiAPIKey = import.meta.env.VITE_GEMINI_API_KEY;
     // Define the request body
     const fetchGPTResponse = async (prompt) => {
         setGeminiError(false);
+        setGptInEffect(true);
         setAwaitingResponse(true);
         const requestBody = {
             contents: [
@@ -195,28 +197,29 @@ export const CV = () => {
             ])
             let responseText = data.candidates[0].content.parts[0].text
             let newString = '';
-        const updateString = (i) => {
-            if (i < responseText.length) {
-                newString += responseText[i];
-                setConversation(prevState => {
-                    const newConversation = [...prevState];
-                    newConversation[newConversation.length - 1].message = newString;
-                    return newConversation;
-                });
-                let randomNumber = Math.floor(Math.random() * 10) + 1;
-                if (randomNumber % 5 === 0) {
-                    randomNumber *= 5;
+            const updateString = (i) => {
+                if (i < responseText.length) {
+                    newString += responseText[i];
+                    setConversation(prevState => {
+                        const newConversation = [...prevState];
+                        newConversation[newConversation.length - 1].message = newString;
+                        return newConversation;
+                    });
+                    let randomNumber = Math.floor(Math.random() * 10) + 1;
+                    if (randomNumber % 5 === 0) {
+                        randomNumber *= 5;
+                    }
+                    setTimeout(() => updateString(i + 1), randomNumber);
+                } else {
+                    setHandToGPT(true)
+                    setGptInEffect(false)
                 }
-                setTimeout(() => updateString(i + 1), randomNumber);
-            } else {
-                setHandToGPT(true)
-            }
-        };
-        updateString(0);
+            };
+            updateString(0);
         } catch (error) {
             setGeminiError(true)
             console.error("There was a problem with the API request:", error);
-        } finally { 
+        } finally {
             setAwaitingResponse(false);
         }
     }
@@ -338,11 +341,11 @@ export const CV = () => {
                             ))}
 
                             {/* IF WAITING FOR A RESPONSE then say "Thinking" */}
-                            {awaitingResponse && ( 
+                            {awaitingResponse && (
                                 <>Thinking...</>
                             )}
                             {/* IF ERROR IN RESPONSE then say sorry */}
-                            {geminiError && ( 
+                            {geminiError && (
                                 <> I'm really sorry.  There's been an issue with the response</>
                             )}
 
@@ -357,9 +360,15 @@ export const CV = () => {
                                     placeholder='Ask me anything'
                                     value={userInput}
                                     onChange={handleUserInputChange} />
-                                <button
-                                    className='Go3'
-                                    onClick={handleAskGPT}>Go</button>
+                                {gptInEffect ? (
+                                    <button
+                                        className='Go3'>Go</button>
+                                ) : (
+                                    <button
+                                        className='Go3'
+                                        onClick={handleAskGPT}>Go
+                                    </button>
+                                )}
                             </div>
                         ) : (
                             <div className='Input-container'>
