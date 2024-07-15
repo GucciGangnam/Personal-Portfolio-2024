@@ -3,33 +3,16 @@ import "./CV.css";
 
 export const CV = () => {
 
-    //GPT EFFECT
-    const page5Text = "Confident in my teaching ability, based on exceptional feedback, I wanted to challenge myself and learn something new.  My admiration for tech and creativity led me to learning Full Stack Web development.  I faced the biggest learning curve of my life trying to self teach, but persisted and eventually found the Odin Project.  The Odin Project is an open sourced, deeply comprehensive curriculum of web development from scratch.  With a solid syllabus to follow, I moved to Ho Chi Minh City and started working part time so I could focus on writing code.";
-    const [page5code, setPage5Code] = useState('');
-    const GPTeffect = () => {
-        let newString = '';
-        const updateString = (i) => {
-            if (i < page5Text.length) {
-                newString += page5Text[i];
-                setPage5Code(newString);
-                let randomNumber = Math.floor(Math.random() * 10) + 1;
-                if (randomNumber % 5 === 0) {
-                    randomNumber *= 5;
-                }
-                setTimeout(() => updateString(i + 1), randomNumber);
-            }
-        };
-        updateString(0);
-    };
 
 
 
+
+
+    // Scroll
     const scrollableDivRef = useRef(null);
     const [lastScrollTop, setLastScrollTop] = useState(0);
     const [isNavVisible, setIsNavVisible] = useState(false);
     const [activePage, setActivePage] = useState(1);
-
-    const [pageInVP, setPageInVP] = useState(null)
 
     const handleScroll = () => {
         const scrollTop = scrollableDivRef.current.scrollTop;
@@ -47,7 +30,6 @@ export const CV = () => {
         }
         setLastScrollTop(scrollTop);
     };
-
     useEffect(() => {
         const scrollableDiv = scrollableDivRef.current;
         scrollableDiv.addEventListener('scroll', handleScroll);
@@ -55,34 +37,120 @@ export const CV = () => {
             scrollableDiv.removeEventListener('scroll', handleScroll);
         };
     }, [lastScrollTop]);
-
     useEffect(() => {
         const observerOptions = {
             root: scrollableDivRef.current,
             threshold: 0.5
         };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const page = entry.target.getAttribute('data-page');
                     setActivePage(parseInt(page));
                     console.log(page)
-                    setPageInVP(page)
-                    if (page == 5) {
-                        GPTeffect();
-                    }
                 }
             });
         }, observerOptions);
-
         const pages = document.querySelectorAll('.Main > div');
         pages.forEach(page => observer.observe(page));
-
         return () => {
             pages.forEach(page => observer.unobserve(page));
         };
     }, []);
+
+
+
+
+
+    const [conversation, setConversation] = useState(
+        [
+            {
+                avatar: "/Avatar.png",
+                message: ""
+            }
+        ]
+    )
+
+
+    const page5Text = "Confident in my teaching ability, based on exceptional feedback, I wanted to challenge myself and learn something new.  My admiration for tech and creativity led me to learning Full Stack Web development.  I faced the biggest learning curve of my life trying to self teach, but persisted and eventually found the Odin Project.  The Odin Project is an open sourced, deeply comprehensive curriculum of web development from scratch.  With a solid syllabus to follow, I moved to Ho Chi Minh City and started working part time so I could focus on writing code.";
+    const [page5CodeWritten, setPage5CodeWritten] = useState(false)
+    const [forcedMessageAvailable, setForcedMessageAvailable] = useState(false)
+    const [handedToGPT, setHandToGPT] = useState(false);
+    const [dummyInputText, setDummyInputText] = useState("What did you learn?")
+
+    useEffect(() => {
+        if (activePage !== 5) {
+            return;
+        }
+        if (page5CodeWritten) {
+            return;
+        }
+        setPage5CodeWritten(true);
+        let newString = '';
+        const updateString = (i) => {
+            if (i < page5Text.length) {
+                newString += page5Text[i];
+                setConversation(prevState => {
+                    const newConversation = [...prevState];
+                    newConversation[0].message = newString;
+                    return newConversation;
+                });
+                let randomNumber = Math.floor(Math.random() * 10) + 1;
+                if (randomNumber % 5 === 0) {
+                    randomNumber *= 5;
+                }
+                setTimeout(() => updateString(i + 1), randomNumber);
+            } else {
+                setForcedMessageAvailable(true)
+            }
+        };
+        updateString(0);
+    }, [activePage, page5CodeWritten]);
+
+
+    const handleFakeMessage = () => {
+        setDummyInputText("");
+        setConversation(prevConversation => [
+            ...prevConversation,
+            { avatar: "/User.png", message: "What did you learn" }
+        ]);
+        setTimeout(() => {
+            forcedResponse();
+        }, 1000)
+    };
+
+    const forcedResponse = () => {
+        let responseText = "During my time with the Odin Project, I gained foundational knowledge and hands-on experience across the full stack of web development. I honed my skills in HTML, CSS, and JavaScript for building responsive and interactive front-end interfaces. On the back end, I delved into server-side programming with Node.js, Express.js, and MongoDB, learning to create RESTful APIs and manage databases. Throughout various projects, I developed a strong understanding of version control using Git and GitHub, as well as deploying applications on cloud platforms. My learning emphasised problem-solving, debugging, and a disciplined approach to coding practices, preparing me to contribute effectively to dynamic development teams."
+        setConversation(prevState => [
+            ...prevState,
+            { avatar: "/Avatar.png", message: "" }
+        ]);
+
+        let newString = '';
+        const updateString = (i) => {
+            if (i < responseText.length) {
+                newString += responseText[i];
+                setConversation(prevState => {
+                    const newConversation = [...prevState];
+                    newConversation[newConversation.length - 1].message = newString;
+                    return newConversation;
+                });
+                let randomNumber = Math.floor(Math.random() * 10) + 1;
+                if (randomNumber % 5 === 0) {
+                    randomNumber *= 5;
+                }
+                setTimeout(() => updateString(i + 1), randomNumber);
+            } else {
+                setHandToGPT(true)
+            }
+        };
+        updateString(0);
+    };
+
+
+
+
+
 
     return (
         <div className="CV">
@@ -186,18 +254,66 @@ export const CV = () => {
                     <img src='Code.png' />
                     <div className='Chat-container'>
                         <div className='Chat-window'>
+
                             <div className='Message-container'>
                                 <img
-                                className='Message-image'
-                                src='/Avatar.png'/>
+                                    className='Message-image'
+                                    src={conversation[0].avatar} />
                                 <div className='Message-content'>
-                                {page5code}
+                                    {conversation[0].message}
                                 </div>
                             </div>
+
+                            {conversation[1] && (
+                                <div className='Message-container'>
+                                    <img
+                                        className='Message-image'
+                                        src={conversation[1].avatar} />
+                                    <div className='Message-content'>
+                                        {conversation[1].message}
+                                    </div>
+                                </div>
+                            )}
+
+
+                            {conversation[2] && (
+                                <div className='Message-container'>
+                                    <img
+                                        className='Message-image'
+                                        src={conversation[2].avatar} />
+                                    <div className='Message-content'>
+                                        {conversation[2].message}
+                                    </div>
+                                </div>
+                            )}
+
                         </div>
-                        <div className='Input-container'>
-                            ic
-                        </div>
+
+
+                        {handedToGPT ? (
+                            <div className='Input-container'>
+                                <input />
+                                <button
+                                className='Go3'>Go</button>
+                            </div>
+                        ) : (
+                            <div className='Input-container'>
+                                <div className='Dummy-input'>{dummyInputText}</div>
+                                {forcedMessageAvailable ? (
+                                    <button
+                                    className='Go2'
+                                        onClick={handleFakeMessage}
+                                    >Go</button>
+                                ) : (
+                                    <button
+                                    className='Go1'
+                                    >Go</button>
+                                )}
+
+                            </div>
+                        )}
+
+
                     </div>
                 </div>
 

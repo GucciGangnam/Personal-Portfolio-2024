@@ -250,16 +250,21 @@ max-width: 600px;
 .Chat-container{ 
     width: 90%;
     max-width: 600px;
-    outline: 1px dashed pink;
+    /* outline: 1px dashed pink; */
     height: calc(100% - 230px);
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .Chat-window{
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: end;
+    overflow: scroll;
+    gap: 20px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .Message-container{ 
@@ -273,5 +278,69 @@ border: 2px solid var(--secondary-fill);
 border-radius: 25px;
 }
 .Input-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 
+}
+
+.Input-container input{
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background: var(--secondary-fill);
+    font-size: 16px;
+    color: var(--secondary-text);
+    animation: glow 1s ease-in-out;
+}
+.Input-container input:focus{ 
+    outline: 2px solid var(--primary-fill);
+}
+.Input-container .Dummy-input{
+    flex: 1;
+    min-height: 25px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background: var(--secondary-fill);
+    font-size: 16px;
+    color: var(--secondary-text);
+    display: flex;
+    align-items: center;
+}
+
+.Go1{ 
+background: var(--secondary-fill);
+border: none;
+padding: 10px;
+border-radius: 25px;
+color: var(--secondary-text);
+}
+
+.Go2{ 
+background: var(--secondary-fill);
+border: none;
+padding: 10px;
+border-radius: 25px;
+color: var(--secondary-text);
+animation: glow 1s ease-in-out;
+}
+
+.Go3{ 
+background: var(--secondary-fill);
+border: none;
+padding: 10px;
+border-radius: 25px;
+color: var(--secondary-text);
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px var(--primary-fill)
+    }
+    100% {
+        box-shadow: none;
+    }
 }
