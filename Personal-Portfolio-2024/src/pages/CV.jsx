@@ -3,8 +3,21 @@ import "./CV.css";
 
 export const CV = () => {
 
-
-
+    // Check Viewport Height
+    const [isViewportSmall, setIsViewportSmall] = useState(false);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsViewportSmall(window.innerHeight < 500);
+        };
+        // Initial check on component mount
+        handleResize();
+        // Event listener for window resize
+        window.addEventListener('resize', handleResize);
+        // Clean up the event listener
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []); // Empty dependency array to run effect only on mount
 
 
 
@@ -115,7 +128,6 @@ export const CV = () => {
             forcedResponse();
         }, 1000)
     };
-
     const forcedResponse = () => {
         let responseText = "During my time with the Odin Project, I gained foundational knowledge and hands-on experience across the full stack of web development. I honed my skills in HTML, CSS, and JavaScript for building responsive and interactive front-end interfaces. On the back end, I delved into server-side programming with Node.js, Express.js, and MongoDB, learning to create RESTful APIs and manage databases. Throughout various projects, I developed a strong understanding of version control using Git and GitHub, as well as deploying applications on cloud platforms. My learning emphasised problem-solving, debugging, and a disciplined approach to coding practices, preparing me to contribute effectively to dynamic development teams."
         setConversation(prevState => [
@@ -133,7 +145,7 @@ export const CV = () => {
                 });
                 let randomNumber = Math.floor(Math.random() * 10) + 1;
                 if (randomNumber % 5 === 0) {
-                    randomNumber *= 5;
+                    randomNumber *= 2;
                 }
                 setTimeout(() => updateString(i + 1), randomNumber);
             } else {
@@ -325,8 +337,18 @@ export const CV = () => {
                     <div className='CV-date'>
                         2022
                     </div>
-                    <img src='Code.png' />
-                    <div className='Chat-container'>
+                    {!isViewportSmall && (
+                        <img src='Code.png' />
+                    )}
+
+
+
+
+                    <div
+                        className='Chat-container'
+                        style={{
+                            height: isViewportSmall ? 'calc(100% - 134px)' : 'calc(100% - 230px)'
+                        }}>
                         <div className='Chat-window'>
 
                             {conversation.map((message, index) => (

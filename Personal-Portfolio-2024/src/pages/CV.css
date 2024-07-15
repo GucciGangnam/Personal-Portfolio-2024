@@ -222,6 +222,7 @@ max-width: 600px;
     border-radius: 25px;
     color: var(--primary-text);
     max-width: fit-content;
+    cursor: pointer;
 }
 
 .Download-CV{ 
@@ -250,8 +251,6 @@ max-width: 600px;
 .Chat-container{ 
     width: 90%;
     max-width: 600px;
-    /* outline: 1px dashed pink; */
-    height: calc(100% - 230px);
     display: flex;
     flex-direction: column;
     gap: 10px;
