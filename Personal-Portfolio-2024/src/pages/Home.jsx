@@ -33,7 +33,7 @@ export const Home = ({ isMobile }) => {
                     <div className="Links">
                         <img
                             onClick={() => window.open('https://github.com/GucciGangnam', '_blank')}
-                            src="/GitHub.png" />
+                            src="/Github.png" />
                         <img
                             onClick={() => window.open('https://www.instagram.com/unlimited_cuisine/?hl=en', '_blank')}
                             src="/Instagram.png" />
@@ -45,7 +45,7 @@ export const Home = ({ isMobile }) => {
                             style={{
                                 width: "100px"
                             }}
-                            src="/QRGOOGLE2.png"
+                            src="/SiteQR2.png"
                         />
                         <div className="Mobile-prompt">Go mobile</div>
                     </div>
