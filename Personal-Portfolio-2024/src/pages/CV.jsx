@@ -119,6 +119,7 @@ export const CV = () => {
 
 
     const handleFakeMessage = () => {
+        setHandToGPT(true)
         setDummyInputText("");
         setConversation(prevConversation => [
             ...prevConversation,
