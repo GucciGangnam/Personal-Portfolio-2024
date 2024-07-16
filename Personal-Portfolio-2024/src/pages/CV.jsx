@@ -236,6 +236,54 @@ export const CV = () => {
         }
     }
 
+    // DOWNLOAD CV //
+    const [openInput, setOpenInput] = useState(false);
+    const [password, setPassword] = useState('')
+    const [incorrectPassword, setIncorrectPassword] = useState(false);
+    const [checkingPassword, setCheckingPassword] = useState(false);
+    const handldeChangePassword = (e) => {
+        setPassword(e.target.value);
+    }
+
+    const downloadCV = async () => {
+        setCheckingPassword(true)
+        setIncorrectPassword(false)
+        const backEndURL = import.meta.env.VITE_BACKEND_URL
+        try {
+            const response = await fetch(`${backEndURL}/downloadcv`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ password }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            // Assuming you want to download the file directly if successful
+            setCheckingPassword(false)
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'ALEX_MICKLEWRIGHT_CV.pdf';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+
+        } catch (error) {
+            console.error('Error downloading CV:', error);
+            setIncorrectPassword(true);
+            setPassword('');
+            setCheckingPassword(false)
+        }
+    }
+
+
 
 
     return (
@@ -425,8 +473,52 @@ export const CV = () => {
                             I love creating and I have walked the path of web development in complete solitude, but I want to create, build and grow something with other people who are passionate about the same thing. I love problem solving and banging heads to design and execute elegant solutions.
                         </div>
                         <div className='Download-CV'>
-                            <p>Click here to download my full resume</p>
-                            <button>Download</button>
+
+
+
+
+                            {openInput ? (
+                                <>
+
+                                {checkingPassword ? ( 
+                                    <p>Please wait</p>
+                                ) : (
+                                    <p>Enter password to continue</p>
+                                )}
+                                    
+
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            gap: "5px"
+                                        }}>
+                                        <input
+                                            value={password}
+                                            onChange={handldeChangePassword}
+                                            type='password'
+                                            className={incorrectPassword ? 'DownloadCV-input-incorrect' : 'DownloadCV-input'} />
+                                        <img
+                                            onClick={downloadCV}
+                                            style={{
+                                                width: "30px",
+                                                cursor: "pointer"
+                                            }}
+                                            src='Download.png' />
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <p>Click here to download my full resume</p>
+                                    <button
+                                        onClick={() => { setOpenInput(true) }}>Download</button>
+                                </>
+                            )}
+
+
+
+
+
                         </div>
 
                     </div>

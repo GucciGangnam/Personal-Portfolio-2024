@@ -313,7 +313,7 @@ border-radius: 25px;
 .Go1{ 
 background: var(--secondary-fill);
 border: none;
-padding: 10px;
+padding: 15px;
 border-radius: 25px;
 color: var(--secondary-text);
 }
@@ -321,18 +321,20 @@ color: var(--secondary-text);
 .Go2{ 
 background: var(--secondary-fill);
 border: none;
-padding: 10px;
+padding: 15px;
 border-radius: 25px;
-color: var(--secondary-text);
-animation: glow 3s ease-in-out;
+color: var(--primary-text);
+animation: glow 0.5s ease-in-out infinite;
+cursor: pointer;
 }
 
 .Go3{ 
 background: var(--secondary-fill);
 border: none;
-padding: 10px;
+padding: 15px;
 border-radius: 25px;
 color: var(--secondary-text);
+cursor: pointer;
 }
 
 @keyframes glow {
@@ -341,5 +343,46 @@ color: var(--secondary-text);
     }
     100% {
         box-shadow: none;
+    }
+}
+
+/* DIOWNLOAD CV  */
+
+.DownloadCV-input{ 
+    background-color: var(--primary-fill);
+    border: none;
+    padding: 10px;
+    border-radius: 25px;
+    color: var(--primary-text);
+    max-width: fit-content;
+    text-align: center;
+}
+.DownloadCV-input:focus{ 
+    outline: none;
+}
+
+.DownloadCV-input-incorrect {
+    background-color: var(--primary-fill);
+    border: none;
+    padding: 10px;
+    border-radius: 25px;
+    color: var(--primary-text);
+    max-width: fit-content;
+    text-align: center;
+    animation: shake 0.3s ease;
+}
+.DownloadCV-input-incorrect:focus{ 
+    outline: none;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25%, 75% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
     }
 }
