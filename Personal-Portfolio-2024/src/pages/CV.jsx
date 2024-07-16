@@ -193,6 +193,7 @@ export const CV = () => {
         };
         // Make the API call
         try {
+            console.log("GeminiAPI KEY is", GeminiAPIKey)
             const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${GeminiAPIKey}`, {
                 method: "POST",
                 headers: {
@@ -251,6 +252,7 @@ export const CV = () => {
         setIncorrectPassword(false)
         const backEndURL = import.meta.env.VITE_BACKEND_URL
         try {
+            console.log("BACKENDURL is", backEndURL)
             const response = await fetch(`${backEndURL}/downloadcv`, {
                 method: 'POST',
                 headers: {
