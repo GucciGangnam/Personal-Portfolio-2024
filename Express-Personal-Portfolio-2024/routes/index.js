@@ -105,7 +105,7 @@ router.post('/downloadcv', (req, res) => {
     });
     return; // Stop further execution here
   } else if (password === 'gnrl6677') {
-    const filePath = path.join(__dirname, '..', 'files', 'generalPDF.pdf');
+    const filePath = path.join(__dirname, '..', 'files', 'Alexander_Micklewright_CV.pdf');
     console.log(__dirname, '..', 'files', 'generalPDF.pdf');
     res.sendFile(filePath, (err) => {
       if (err) {
