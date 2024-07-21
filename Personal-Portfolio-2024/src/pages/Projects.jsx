@@ -31,7 +31,7 @@ export const Projects = () => {
                     </div>
                 </div>
                 <div className="Project-description">
-                    Kiko is a full stack events based mobile web app that uses our phones to bring people together in real life. Post what you’re up to, choose who can join and let the 6 degrees of separation work its magic! Try it out!
+                    Kiko is a <strong style={{ color: "var(--primary-text)"}}>full stack events based mobile web app</strong> that uses our phones to bring people together in real life. Post what you’re up to, choose who can join and let the 6 degrees of separation work its magic! Try it out!
                     <div className="Project-Technology">
                         <img
                             className="Project-tech-icon"
@@ -78,7 +78,7 @@ export const Projects = () => {
                     </div>
                 </div>
                 <div className="Project-description">
-                    Moment is a Group focused instant messaging application that aims to replicate the dynamics of face to face snap conversations. Messages disappear after a few seconds and say 'goodbye' to endless catch up scrolling. This was another full MERN stack application that allowed me to explore and implement new technologies.
+                    Moment is a <strong style={{ color: "var(--primary-text)"}}>Group focused instant messaging application</strong> that aims to replicate the dynamics of face to face snap conversations. Messages disappear after a few seconds and say 'goodbye' to endless catch up scrolling. This was another full MERN stack application that allowed me to explore and implement new technologies.
                     <div className="Project-Technology">
                         <img
                             className="Project-tech-icon"
@@ -129,7 +129,7 @@ export const Projects = () => {
                     </div>
                 </div>
                 <div className="Project-description">
-                    Toon Finder is a full MERN stack game where users try to find and tag cartoon characters in a picture as quick as possible. This project pulled upon a wide range of JavaScript knowledge to complete and was one of three final full stack projects set by the Odin Project.
+                    Toon Finder is a <strong style={{ color: "var(--primary-text)"}}>full MERN stack game</strong> where users try to find and tag cartoon characters in a picture as quick as possible. This project pulled upon a wide range of JavaScript knowledge to complete and was one of three final full stack projects set by the Odin Project.
                     <div className="Project-Technology">
                         <img
                             className="Project-tech-icon"
@@ -176,7 +176,7 @@ export const Projects = () => {
                     </div>
                 </div>
                 <div className="Project-description">
-                Clueless is a word puzzle game where users have to try to guess the secret word by inputting random words. If the users input shares a letter in the secret word, the word will appear green else it will appear red, allowing the user to eventually narrow down the letters in the word.  Give it a try!
+                Clueless is a <strong style={{ color: "var(--primary-text)"}}>word puzzle game</strong> where users have to try to guess the secret word by inputting random words. If the users input shares a letter in the secret word, the word will appear green else it will appear red, allowing the user to eventually narrow down the letters in the word.  Give it a try!
                     <div className="Project-Technology">
                         <img
                             className="Project-tech-icon"
@@ -215,7 +215,7 @@ export const Projects = () => {
                     </div>
                 </div>
                 <div className="Project-description">
-                    Console.blog is a developer focused blog posting site where users can blog and converse in comment sections. This project showcases the implementation of a full JAM stack with a focus on restful API development and access tokens.
+                    Console.blog is a developer focused <strong style={{ color: "var(--primary-text)"}}>blog posting site</strong> where users can blog and converse in comment sections. This project showcases the implementation of a full JAM stack with a focus on restful API development and access tokens.
                     <div className="Project-Technology">
                         <img
                             className="Project-tech-icon"
@@ -262,7 +262,7 @@ export const Projects = () => {
                     </div>
                 </div>
                 <div className="Project-description">
-                    Infinitune is a front end application mimicking an online store that focuses on showcasing the use of 3rd party API's. Inspired by Spotify, I designed a shop to browse and buy music. Unfortunately, the country selector doesn’t seem to be working anymore so I will re-read the documentation at a later date.
+                    Infinitune is a front end application mimicking an <strong style={{ color: "var(--primary-text)"}}>online store</strong> that focuses on showcasing the use of 3rd party API's. Inspired by Spotify, I designed a shop to browse and buy music. Unfortunately, the country selector doesn’t seem to be working anymore so I will re-read the documentation at a later date.
                     <div className="Project-Technology">
                         <img
                             className="Project-tech-icon"
@@ -302,7 +302,7 @@ export const Projects = () => {
                     </div>
                 </div>
                 <div className="Project-description">
-                    Jokes on u is an express built web app where users can post jokes but must become a "VIP" member to see the joke set-ups. This project showcases the implementation of authentication and node proficiency as-well as the use of No SQL DB MongoDB. Although not the prettiest site, the front was built using EJS as the view engine of my express app.
+                    Jokes on u is an <strong style={{ color: "var(--primary-text)"}}>express built web app</strong> where users can post jokes but must become a "VIP" member to see the joke set-ups. This project showcases the implementation of authentication and node proficiency as-well as the use of No SQL DB MongoDB. Although not the prettiest site, the front was built using EJS as the view engine of my express app.
                     <div className="Project-Technology">
                         <img
                             className="Project-tech-icon"
@@ -330,7 +330,6 @@ export const Projects = () => {
                         Hidden GPT
                     </div>
                     <img src="/Bot.png" className="Project-image">
-
                     </img>
                     <div className="Project-buttons">
                         <button
@@ -342,7 +341,7 @@ export const Projects = () => {
                     </div>
                 </div>
                 <div className="Project-description">
-                    Hidden GPT uses the Google Gemini API to communicate with Googles LLM under the covert ruse of a phoney Outlook help page. This site showcases nothing more than 3rd party API implementation and my first site with an actual user.
+                    Hidden GPT uses the Google Gemini API to <strong style={{ color: "var(--primary-text)"}}>communicate with Googles LLM</strong> under the covert ruse of a phoney Outlook help page. This site showcases nothing more than 3rd party API implementation and my first site with an actual user.
                     <div className="Project-Technology">
                         <img
                             className="Project-tech-icon"
@@ -382,7 +381,7 @@ export const Projects = () => {
                     </div>
                 </div>
                 <div className="Project-description">
-                    Catch Em All was my first fully front end focused web app. Its a simple memory game designed to showcase the implementation of a large scope of the React framework.
+                    Catch Em All was my first fully front end focused web app. Its <strong style={{ color: "var(--primary-text)"}}>a simple memory game</strong> designed to showcase the implementation of a large scope of the React framework.
                     <div className="Project-Technology">
                         <img
                             className="Project-tech-icon"
