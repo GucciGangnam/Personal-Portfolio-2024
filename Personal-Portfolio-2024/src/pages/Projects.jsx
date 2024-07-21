@@ -176,7 +176,7 @@ export const Projects = () => {
                     </div>
                 </div>
                 <div className="Project-description">
-                    Console.blog is a developer focused blog posting site where users can blog and converse in comment sections. This project showcases the implementation of a full JAM stack with a focus on restful API development and access tokens.
+                Clueless is a word puzzle game where users have to try to guess the secret word by inputting random words. If the users input shares a letter in the secret word, the word will appear green else it will appear red, allowing the user to eventually narrow down the letters in the word.  Give it a try!
                     <div className="Project-Technology">
                         <img
                             className="Project-tech-icon"
@@ -197,6 +197,7 @@ export const Projects = () => {
                     </div>
                 </div>
             </div>
+
             <div className="Project-container">
                 <div className="Project-graphics">
                     <div className="Project-title">
