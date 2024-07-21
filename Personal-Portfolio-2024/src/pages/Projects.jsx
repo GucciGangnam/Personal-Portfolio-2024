@@ -162,6 +162,44 @@ export const Projects = () => {
             <div className="Project-container-reverse">
                 <div className="Project-graphics">
                     <div className="Project-title">
+                        Clueless
+                    </div>
+                    <img src="/ABC.png" className="Project-image">
+                    </img>
+                    <div className="Project-buttons">
+                        <button
+                            onClick={() => window.open('https://github.com/GucciGangnam/cluelessv1', '_blank')}
+                            className="Code-BTN">code</button>
+                        <button
+                            onClick={() => window.open('https://cluelessv1.vercel.app', '_blank')}
+                            className="Live-BTN">Live</button>
+                    </div>
+                </div>
+                <div className="Project-description">
+                    Console.blog is a developer focused blog posting site where users can blog and converse in comment sections. This project showcases the implementation of a full JAM stack with a focus on restful API development and access tokens.
+                    <div className="Project-Technology">
+                        <img
+                            className="Project-tech-icon"
+                            src="/JavaScript.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/CSS.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/React.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/Vite.png"
+                        ></img>
+                    </div>
+                </div>
+            </div>
+            <div className="Project-container">
+                <div className="Project-graphics">
+                    <div className="Project-title">
                         Console.blog
                     </div>
                     <img src="/Console.png" className="Project-image">
@@ -206,7 +244,7 @@ export const Projects = () => {
                 </div>
             </div>
 
-            <div className="Project-container">
+            <div className="Project-container-reverse">
                 <div className="Project-graphics">
                     <div className="Project-title">
                         Infinitune
@@ -245,7 +283,7 @@ export const Projects = () => {
                 </div>
             </div>
 
-            <div className="Project-container-reverse">
+            <div className="Project-container">
                 <div className="Project-graphics">
                     <div className="Project-title">
                         Jokes-on-U
@@ -285,7 +323,7 @@ export const Projects = () => {
                 </div>
             </div>
 
-            <div className="Project-container">
+            <div className="Project-container-reverse">
                 <div className="Project-graphics">
                     <div className="Project-title">
                         Hidden GPT
@@ -325,7 +363,7 @@ export const Projects = () => {
                 </div>
             </div>
 
-            <div className="Project-container-reverse">
+            <div className="Project-container">
                 <div className="Project-graphics">
                     <div className="Project-title">
                         Catch-em-all
@@ -364,6 +402,7 @@ export const Projects = () => {
                     </div>
                 </div>
             </div>
+
         </div >
     )
 }
