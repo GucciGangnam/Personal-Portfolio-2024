@@ -51,6 +51,10 @@ export const Projects = () => {
                         ></img>
                         <img
                             className="Project-tech-icon"
+                            src="/Express.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
                             src="/Nodejs.png"
                         ></img>
                         <img
@@ -95,6 +99,10 @@ export const Projects = () => {
                         <img
                             className="Project-tech-icon"
                             src="/Vite.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/Express.png"
                         ></img>
                         <img
                             className="Project-tech-icon"
@@ -149,6 +157,10 @@ export const Projects = () => {
                         ></img>
                         <img
                             className="Project-tech-icon"
+                            src="/Express.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
                             src="/Nodejs.png"
                         ></img>
                         <img
@@ -160,6 +172,57 @@ export const Projects = () => {
             </div>
 
             <div className="Project-container-reverse">
+                <div className="Project-graphics">
+                    <div className="Project-title">
+                        49-Letters
+                    </div>
+                    <img src="/Keyboard.png" className="Project-image">
+                    </img>
+                    <div className="Project-buttons">
+                        <button
+                            onClick={() => window.open('https://github.com/GucciGangnam/49-LETTERS', '_blank')}
+                            className="Code-BTN">code</button>
+                        <button
+                            onClick={() => window.open('https://49-letters.vercel.app', '_blank')}
+                            className="Live-BTN">Live</button>
+                    </div>
+                </div>
+                <div className="Project-description">
+                49-Letters is a <strong style={{ color: "var(--primary-text)"}}>word puzzle game</strong> where users need to type 49 letters in a row, comprised of real words. The longer the words, the more points you score.  However, some of the letters are pre-filled making it challanging to find words that fit around those letters. Users can post their scores and plug. Give it a go! The paths to completion are unlimited!
+                    <div className="Project-Technology">
+                    <img
+                            className="Project-tech-icon"
+                            src="/JavaScript.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/CSS.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/React.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/Vite.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/Express.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/Nodejs.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/Mongo.png"
+                        ></img>
+                    </div>
+                </div>
+            </div>
+
+            <div className="Project-container">
                 <div className="Project-graphics">
                     <div className="Project-title">
                         Clueless
@@ -176,7 +239,7 @@ export const Projects = () => {
                     </div>
                 </div>
                 <div className="Project-description">
-                Clueless is a <strong style={{ color: "var(--primary-text)"}}>word puzzle game</strong> where users have to try to guess the secret word by inputting random words. If the users input shares a letter in the secret word, the word will appear green else it will appear red, allowing the user to eventually narrow down the letters in the word.  Give it a try!
+                Clueless is a <strong style={{ color: "var(--primary-text)"}}>another word puzzle game</strong> where users have to try to guess the secret word by inputting random words. If the users input shares a letter in the secret word, the word will appear green else it will appear red, allowing the user to eventually narrow down the letters in the word.  Give it a try!
                     <div className="Project-Technology">
                         <img
                             className="Project-tech-icon"
@@ -198,7 +261,7 @@ export const Projects = () => {
                 </div>
             </div>
 
-            <div className="Project-container">
+            <div className="Project-container-reverse">
                 <div className="Project-graphics">
                     <div className="Project-title">
                         Console.blog
@@ -245,7 +308,7 @@ export const Projects = () => {
                 </div>
             </div>
 
-            <div className="Project-container-reverse">
+            <div className="Project-container">
                 <div className="Project-graphics">
                     <div className="Project-title">
                         Infinitune
@@ -284,7 +347,7 @@ export const Projects = () => {
                 </div>
             </div>
 
-            <div className="Project-container">
+            <div className="Project-container-reverse">
                 <div className="Project-graphics">
                     <div className="Project-title">
                         Jokes-on-U
@@ -324,7 +387,7 @@ export const Projects = () => {
                 </div>
             </div>
 
-            <div className="Project-container-reverse">
+            <div className="Project-container">
                 <div className="Project-graphics">
                     <div className="Project-title">
                         Hidden GPT
@@ -363,7 +426,7 @@ export const Projects = () => {
                 </div>
             </div>
 
-            <div className="Project-container">
+            <div className="Project-container-reverse">
                 <div className="Project-graphics">
                     <div className="Project-title">
                         Catch-em-all
