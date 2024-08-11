@@ -57,9 +57,11 @@ export const Home = ({ isMobile }) => {
                     <img src="/Html.png" />
                     <img src="/JavaScript.png" />
                     <img src="/CSS.png" />
+                    <img src="/React.png" />
                     <img src="/Vite.png" />
                     <img src="/Express.png" />
                     <img src="/Nodejs.png" />
+                    <img src="/PSQL.png" />
                     <img src="/Mongo.png" />
                     <img src="/Socket.png" />
                     <img src="/EJS.png" />
