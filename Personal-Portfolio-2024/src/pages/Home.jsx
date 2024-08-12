@@ -42,9 +42,6 @@ export const Home = ({ isMobile }) => {
                 {!isMobile && (
                     <div className="Desktop-only">
                         <img
-                            style={{
-                                width: "100px"
-                            }}
                             src="/SiteQR2.png"
                         />
                         <div className="Mobile-prompt">Go mobile</div>
@@ -54,19 +51,21 @@ export const Home = ({ isMobile }) => {
 
 
                 <div className="Home-medals">
-                    <img src="/Html.png" />
-                    <img src="/JavaScript.png" />
-                    <img src="/CSS.png" />
-                    <img src="/React.png" />
-                    <img src="/Vite.png" />
-                    <img src="/Express.png" />
-                    <img src="/Nodejs.png" />
-                    <img src="/PSQL.png" />
-                    <img src="/Mongo.png" />
-                    <img src="/Socket.png" />
-                    <img src="/EJS.png" />
-                    <img src="/Pug.png" />
-                    <img src="/Git.png" />
+                    <img src="/Html.png" alt="HTML" />
+                    <img src="/JavaScript.png" alt="JS" />
+                    <img src="/CSS.png" alt="CSS"/>
+                    <img src="/React.png" alt="React"/>
+                    <img src="/Vite.png" alt="Vite"/>
+                    <img src="/Express.png" alt="Express"/>
+                    <img src="/Nodejs.png" alt="Node JS" />
+                    <img src="/PSQL.png" alt="PSQL"/>
+                    <img src="/Mongo.png" alt="MONGODB"/>
+                    <img src="/JWT.png" alt="JWT"/>
+                    <img src="/Passport.png" alt="PassportJS"/>
+                    <img src="/Socket.png" alt="Socket IO"/>
+                    <img src="/EJS.png" alt="EJS"/>
+                    <img src="/Pug.png" alt="PUG"/>
+                    <img src="/Git.png" alt="GIT"/>
                 </div>
 
             </div>

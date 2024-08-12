@@ -86,20 +86,39 @@
 }
 
 /* QR */
-.Desktop-only{ 
+.Desktop-only {
+    position: relative;
+    height: 200px;
+    width: 200px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: visible;
+}
 
+.Desktop-only img {
+    position: absolute;
+    width: 100px;
+    transition: 300ms ease-in-out;
+}
 
+.Desktop-only img:hover {
+    position: absolute;
+    width: 200px;
+    transition: 300ms ease-in-out;
+    cursor: none;
 }
 
 
-.Mobile-prompt{ 
+.Mobile-prompt {
+    position: absolute;
+    bottom: -10px;
     color: var(--secondary-text);
 
 }
+
 /* MEDALS */
 .Home-medals {
     /* outline: 1px solid orange; */
