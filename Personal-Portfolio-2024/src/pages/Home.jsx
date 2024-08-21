@@ -28,7 +28,7 @@ export const Home = ({ isMobile }) => {
                     </div>
                     <div className="Devider"></div>
                     <div className="Info">
-                    I started learning to code in 2022 along side the Odin Project and have been building projects every day since. My portfolio showcases my journey and the skills I’ve developed. I strive to and succeed in being a top performer in everything I do. I code every single day and I take pictures when I can. Check out both sides of my life here.
+                        I started learning to code in 2022 along side the Odin Project and have been building projects every day since. My portfolio showcases my journey and the skills I’ve developed. I strive to and succeed in being a top performer in everything I do. I code every single day and I take pictures when I can. Check out both sides of my life here.
                     </div>
                     <div className="Links">
                         <img
@@ -53,20 +53,22 @@ export const Home = ({ isMobile }) => {
                 <div className="Home-medals">
                     <img src="/Html.png" alt="HTML" />
                     <img src="/JavaScript.png" alt="JS" />
-                    <img src="/CSS.png" alt="CSS"/>
-                    <img src="/React.png" alt="React"/>
-                    <img src="/Vite.png" alt="Vite"/>
-                    <img src="/Express.png" alt="Express"/>
+                    <img src="/CSS.png" alt="CSS" />
+                    <img src="/React.png" alt="React" />
+                    <img src="/Vite.png" alt="Vite" />
+                    <img src="/Express.png" alt="Express" />
                     <img src="/Nodejs.png" alt="Node JS" />
-                    <img src="/PSQL.png" alt="PSQL"/>
-                    <img src="/Mongo.png" alt="MONGODB"/>
-                    <img src="/Postman.png" alt="Postman"/>
-                    <img src="/JWT.png" alt="JWT"/>
-                    <img src="/Passport.png" alt="PassportJS"/>
-                    <img src="/Socket.png" alt="Socket IO"/>
-                    <img src="/EJS.png" alt="EJS"/>
-                    <img src="/Pug.png" alt="PUG"/>
-                    <img src="/Git.png" alt="GIT"/>
+                    <img src="/PSQL.png" alt="PSQL" />
+                    <img src="/Prisma2.png" alt="GIT" />
+                    <img src="/Mongo.png" alt="MONGODB" />
+                    <img src="/Postman.png" alt="Postman" />
+                    <img src="/EJS.png" alt="EJS" />
+                    <img src="/Pug.png" alt="PUG" />
+                    <img src="/Git.png" alt="GIT" />
+                    <img src="/JWT.png" alt="JWT" />
+                    <img src="/Passport.png" alt="PassportJS" />
+                    <img src="/Socket.png" alt="Socket IO" />
+
                 </div>
 
             </div>
