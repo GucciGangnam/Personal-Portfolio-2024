@@ -1,4 +1,3 @@
-// Note to enable new puish - You can delete me.  New ENV added for updated backewnd on Vercel 
 
 //IMPORTS 
 //Styles 
@@ -9,14 +8,6 @@ import { useState, useEffect } from "react";
 
 //COMPONENT 
 export const Contact = ({ setCurrentPage }) => {
-
-    //POPUP
-    // State
-    const [isPopupShowing, setIsPopupShowing] = useState(true)
-    // Hanlder
-    const hidePopup = () => {
-        setIsPopupShowing(false)
-    }
 
     useEffect(() => {
         const messageSent = localStorage.getItem('MessageSent');
@@ -89,18 +80,6 @@ export const Contact = ({ setCurrentPage }) => {
 
     return (
         <div className="Contact">
-
-            {isPopupShowing && (
-                <div className="Overlay">
-                    <div className="Popup">
-                        <h1>Attention</h1>
-                        <p>My backend hosting provider has recently removed my prefered tier and can no longer supprt my contact system. Please bear with me while I look into alternative solutions.</p>
-                        <p>Feel free to still reach out to me at developeramuk@gmail.com</p>
-                        <p><strong>Alex - 23/10/24</strong></p>
-                        <button onClick={hidePopup} className="Attention-Button">OK</button>
-                    </div>
-                </div>
-            )}
 
             {sending && (
                 <div className="Sending">
