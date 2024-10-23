@@ -8,9 +8,28 @@ import "./Projects.css"
 //COMPONENT 
 export const Projects = () => {
 
+    //POPUP
+    // State
+    const [isPopupShowing, setIsPopupShowing] = useState(true)
+    // Hanlder
+    const hidePopup = () => {
+        setIsPopupShowing(false)
+    }
+
 
     return (
         <div className="Projects">
+            {isPopupShowing && (
+                <div className="Overlay">
+                    <div className="Popup">
+                        <h1>Attention</h1>
+                        <p>My backend hosting provider has recently removed my prefered tier and can no longer supprt my projects. Please bear with me while I look into alternative solutions.</p>
+                        <p>Feel free to still view the code of each project with screenshots included in the README files.</p>
+                        <p><strong>Alex - 23/10/24</strong></p>
+                        <button onClick={hidePopup} className="Attention-Button">OK</button>
+                    </div>
+                </div>
+            )}
             <div className="Top-margin">
             </div>
 
@@ -82,7 +101,7 @@ export const Projects = () => {
                     </div>
                 </div>
                 <div className="Project-description">
-                    Moment is a <span style={{ color: "var(--primary-text)" }}>Group focused instant messaging application</span> that aims to replicate the dynamics of face to face snap conversations. Messages disappear after a few seconds and say 'goodbye' to endless catch up scrolling. This was another full MERN stack application that allowed me to explore and implement new technologies.
+                    Moment is a <span style={{ color: "var(--primary-text)" }}>Group focused instant messaging application</span> that aims to replicate the dynamics of face to face snap conversations. This project showcases a deep understanding of the React framework as well as backend technologies inluding secure authentication, web sockets etc...
                     <div className="Project-Technology">
                         <img
                             className="Project-tech-icon"

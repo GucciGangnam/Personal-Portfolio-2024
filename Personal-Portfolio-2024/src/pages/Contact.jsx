@@ -8,6 +8,14 @@ import { useState, useEffect } from "react";
 //COMPONENT 
 export const Contact = ({ setCurrentPage }) => {
 
+    //POPUP
+    // State
+    const [isPopupShowing, setIsPopupShowing] = useState(true)
+    // Hanlder
+    const hidePopup = () => {
+        setIsPopupShowing(false)
+    }
+
     useEffect(() => {
         const messageSent = localStorage.getItem('MessageSent');
         if (messageSent) {
@@ -80,6 +88,18 @@ export const Contact = ({ setCurrentPage }) => {
     return (
         <div className="Contact">
 
+            {isPopupShowing && (
+                <div className="Overlay">
+                    <div className="Popup">
+                        <h1>Attention</h1>
+                        <p>My backend hosting provider has recently removed my prefered tier and can no longer supprt my contact system. Please bear with me while I look into alternative solutions.</p>
+                        <p>Feel free to still reach out to me at developeramuk@gmail.com</p>
+                        <p><strong>Alex - 23/10/24</strong></p>
+                        <button onClick={hidePopup} className="Attention-Button">OK</button>
+                    </div>
+                </div>
+            )}
+
             {sending && (
                 <div className="Sending">
                     <div className="BigBar">
@@ -99,48 +119,13 @@ export const Contact = ({ setCurrentPage }) => {
                 </div>
             )}
 
-            {sendFailed && ( 
-                <>
-                <div className="GIT">
-                    Somethign went wrong. Please try again.
-                </div>
-                <form
-                onSubmit={handleSendMessage}>
-                    <input
-                        value={name}
-                        onChange={handleNameChange}
-                        id="input1"
-                        type="text"
-                        placeholder="Name"
-                        required />
-                    <input
-                        value={email}
-                        onChange={handleEmailChange}
-                        id="input2"
-                        type="email"
-                        placeholder="Email"
-                        required />
-                    <textarea
-                        value={message}
-                        onChange={handleMessageChange}
-                        id="input3"
-                        rows="8"
-                        placeholder="Your message"
-                        required>
-                    </textarea>
-                    <button
-                    type="submit">Send</button>
-                </form>
-            </>
-            )}
-
-            {!sendFailed && !sending && !sent && (
+            {sendFailed && (
                 <>
                     <div className="GIT">
-                        Get in touch
+                        Somethign went wrong. Please try again.
                     </div>
                     <form
-                    onSubmit={handleSendMessage}>
+                        onSubmit={handleSendMessage}>
                         <input
                             value={name}
                             onChange={handleNameChange}
@@ -164,7 +149,42 @@ export const Contact = ({ setCurrentPage }) => {
                             required>
                         </textarea>
                         <button
-                        type="submit">Send</button>
+                            type="submit">Send</button>
+                    </form>
+                </>
+            )}
+
+            {!sendFailed && !sending && !sent && (
+                <>
+                    <div className="GIT">
+                        Get in touch
+                    </div>
+                    <form
+                        onSubmit={handleSendMessage}>
+                        <input
+                            value={name}
+                            onChange={handleNameChange}
+                            id="input1"
+                            type="text"
+                            placeholder="Name"
+                            required />
+                        <input
+                            value={email}
+                            onChange={handleEmailChange}
+                            id="input2"
+                            type="email"
+                            placeholder="Email"
+                            required />
+                        <textarea
+                            value={message}
+                            onChange={handleMessageChange}
+                            id="input3"
+                            rows="8"
+                            placeholder="Your message"
+                            required>
+                        </textarea>
+                        <button
+                            type="submit">Send</button>
                     </form>
                 </>
             )}

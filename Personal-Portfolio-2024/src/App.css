@@ -22,7 +22,7 @@
 
 
 
-.App{ 
+.App {
   background-color: var(--background);
   padding: 10px;
   min-height: calc(100vh - 20px);
@@ -30,4 +30,42 @@
   overflow: hidden;
 
 
+}
+
+
+
+
+.Overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .Popup {
+    background-color: var(--primary-fill);
+    width: 500px;
+    max-width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--primary-text);
+
+    .Attention-Button {
+      background-color: var(--secondary-fill);
+      color: var(--primary-text);
+      border-radius: 25px;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .Attention-Button:hover {
+      color: var(--secondary-text);
+    }
+  }
 }
