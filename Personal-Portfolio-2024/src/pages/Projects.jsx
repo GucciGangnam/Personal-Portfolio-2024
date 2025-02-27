@@ -23,9 +23,12 @@ export const Projects = () => {
                 <div className="Overlay">
                     <div className="Popup">
                         <h1>Attention</h1>
-                        <p>My backend hosting provider has recently removed my prefered tier and can no longer supprt my projects. Please bear with me while I look into alternative solutions.</p>
+                        {/* <p>My backend hosting provider has recently removed my prefered tier and can no longer supprt my projects. Please bear with me while I look into alternative solutions.</p>
+                        <p>Feel free to still view the code of each project with screenshots included in the README files.</p> */}
+                        <p>Web developemt is my hobby and I've built many projects with the goal of developing my skills. </p>
+                        <p>All of these projects are hosted on free tiers across multiple platforms with limited lifespans and therefore may not be live.</p>
                         <p>Feel free to still view the code of each project with screenshots included in the README files.</p>
-                        <p><strong>Alex - 23/10/24</strong></p>
+                        <p><strong>Alex - 27/02/25</strong></p>
                         <button onClick={hidePopup} className="Attention-Button">OK</button>
                     </div>
                 </div>
@@ -36,7 +39,109 @@ export const Projects = () => {
             <div className="Project-container">
                 <div className="Project-graphics">
                     <div className="Project-title">
-                        Kiko (Mobile)
+                        TS To-Do
+                    </div>
+                    <img src="/typescript.png" className="Project-image">
+                    </img>
+                    <div className="Project-buttons">
+                        <button
+                            onClick={() => window.open('https://github.com/GucciGangnam/TS-Todo', '_blank')}
+                            className="Code-BTN">code</button>
+                        <button
+                            onClick={() => window.open('https://ts-todo-amuk.vercel.app', '_blank')}
+                            className="Live-BTN">Live</button>
+                    </div>
+                </div>
+                <div className="Project-description">
+                    TS To-Do is a <span style={{ color: "var(--primary-text)" }}>full PERN stack task manager</span> showcasing confidence in developing with Typescript in both frontend and backend frameworks. SQL DB dvelopment, testing and migration. Redux to manage state and enable optomistic updates to provide a smooth UX.
+                    <div className="Project-Technology">
+                        <img
+                            className="Project-tech-icon"
+                            src="/typescript.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/CSS.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/React.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/Vite.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/Express.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/Nodejs.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/PSQL.png"
+                        ></img>
+                    </div>
+                </div>
+            </div>
+
+            <div className="Project-container-reverse">
+                <div className="Project-graphics">
+                    <div className="Project-title">
+                        Imposterble (PWA)
+                    </div>
+                    <img src="/Spy.png" className="Project-image">
+                    </img>
+                    <div className="Project-buttons">
+                        <button
+                            onClick={() => window.open('https://github.com/GucciGangnam/Imposterble', '_blank')}
+                            className="Code-BTN">code</button>
+                        <button
+                            onClick={() => window.open('https://imposterble.vercel.app', '_blank')}
+                            className="Live-BTN">Live</button>
+                    </div>
+                </div>
+                <div className="Project-description">
+                    Imposterble is a <span style={{ color: "var(--primary-text)" }}>real-time multiple player game</span> showcasing proficiency in building real-time multiplayer games using React, Express, and Socket.io for game state management. As far as I'm aware, its the world first free real-time version of this game.
+                    <div className="Project-Technology">
+                        <img
+                            className="Project-tech-icon"
+                            src="/JavaScript.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/CSS.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/React.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/Vite.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/Express.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/Nodejs.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/Socket.png"
+                        ></img>
+                    </div>
+                </div>
+            </div>
+
+            <div className="Project-container">
+                <div className="Project-graphics">
+                    <div className="Project-title">
+                        Kiko (PWA)
                     </div>
                     <img src="/Kiko.png" className="Project-image">
                     </img>
@@ -87,7 +192,7 @@ export const Projects = () => {
             <div className="Project-container-reverse">
                 <div className="Project-graphics">
                     <div className="Project-title">
-                        Moment (Desktop)
+                        Moment
                     </div>
                     <img src="/Message.png" className="Project-image">
                     </img>

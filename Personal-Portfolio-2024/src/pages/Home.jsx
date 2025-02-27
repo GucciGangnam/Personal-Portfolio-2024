@@ -53,6 +53,7 @@ export const Home = ({ isMobile }) => {
                 <div className="Home-medals">
                     <img src="/Html.png" alt="HTML" />
                     <img src="/JavaScript.png" alt="JS" />
+                    <img src="/typescript.png" alt="JS" />
                     <img src="/CSS.png" alt="CSS" />
                     <img src="/React.png" alt="React" />
                     <img src="/Vite.png" alt="Vite" />
