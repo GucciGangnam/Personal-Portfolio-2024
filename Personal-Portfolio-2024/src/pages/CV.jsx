@@ -230,6 +230,7 @@ export const CV = () => {
             updateString(0);
         } catch (error) {
             setGeminiError(true)
+            setGptInEffect(false);
             console.error("There was a problem with the API request:", error);
         } finally {
             setAwaitingResponse(false);
@@ -383,7 +384,7 @@ export const CV = () => {
 
                 <div className="CV-page-5" data-page="5">
                     <div className='CV-date'>
-                        2022
+                        2021
                     </div>
                     {!isViewportSmall && (
                         <img src='Code.png' />
@@ -467,7 +468,7 @@ export const CV = () => {
                     </div>
                     <div className='CV-page-6-content'>
                         <div className='text'>
-                            In 2024 I moved to Hanoi where I have been coding projects full time and capturing some of the world's most breathtaking scenery on film in my spare time.
+                            In 2025 I moved back to the UK and with a focus on persuing a career in full stack web development, I have been working on my portfolio and building projects every day.  I am now ready to take the next step in my career and join a team where I can contribute my skills and continue to grow as a developer.
                             <br />
                             <br />
                             I love creating and I have walked the path of web development in complete solitude, but I want to create, build and grow something with other people who are passionate about the same thing. I love problem solving and banging heads to design and execute elegant solutions.
