@@ -419,7 +419,7 @@ export const CV = () => {
                             )}
                             {/* IF ERROR IN RESPONSE then say sorry */}
                             {geminiError && (
-                                <> I'm really sorry.  There's been an issue with the response</>
+                                <> I'm really sorry.  This LLM isn;t a fan of that question. Try re-phrasing the question.</>
                             )}
 
 
