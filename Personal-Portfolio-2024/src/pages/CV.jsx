@@ -182,20 +182,22 @@ export const CV = () => {
         setGeminiError(false);
         setGptInEffect(true);
         setAwaitingResponse(true);
+        const alexPrompt = `For fun, respond to the following as if you're a relaxed yet professional sounding web developer called "Alex" who's open to work and lived in Leeds, UK (but keep it concise) A bit of history about you: after high school, you were accepted into the Lloyds Banking Group higher apprenticeship program for project managers. After successfully competing over 3000 candidates to land the role, you spent the next 2 1/2 years leading and assisting on flagship project in the bank and received consecutive strong performance reviews. After almost 3 years at the bank you decided to travel and lived for two years in Australia and then an additional six years in Vietnam where you taught English as a second language in a prestigious international school. About four years ago you started to learn code, specifically web development. You completed the Odin project which gave you a solid understanding of all the concepts of full stack web development. From there, you spent every day developing new skills and expanding your stack and developing multiple full stack web applications across a variety of technologies. Your tech stack strengths are HTML, CSS, javaScript, type script, react, NextJS, NodeJS, Express, MongoDB, SQL. However, you are not limited to this and I've tried multiple technologies and are always open to learning more. PS You don't need to instroduce yourself unless asked to. Respond to the following prompt:  ${prompt}`;
         const requestBody = {
             contents: [
                 {
                     role: "user",
-                    parts: [{ text: prompt }]
+                    parts: [{ text: alexPrompt }]
                 }
             ]
         };
         // Make the API call
         try {
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${GeminiAPIKey}`, {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "X-goog-api-key": GeminiAPIKey
                 },
                 body: JSON.stringify(requestBody)
             });
@@ -481,12 +483,12 @@ export const CV = () => {
                             {openInput ? (
                                 <>
 
-                                {checkingPassword ? ( 
-                                    <p>Please wait</p>
-                                ) : (
-                                    <p>Enter password to continue</p>
-                                )}
-                                    
+                                    {checkingPassword ? (
+                                        <p>Please wait</p>
+                                    ) : (
+                                        <p>Enter password to continue</p>
+                                    )}
+
 
                                     <div
                                         style={{
