@@ -48,10 +48,10 @@
   align-items: center;
 
   .Popup {
-    background-color: var(--primary-fill);
+    background-color: var(--primary-fill);;
     width: 500px;
     max-width: 90%;
-    padding: 10px;
+    padding: 1rem;
     border-radius: 10px;
     color: var(--primary-text);
 

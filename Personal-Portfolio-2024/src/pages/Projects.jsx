@@ -28,12 +28,55 @@ export const Projects = () => {
                         <p>Web developemt is my hobby and I've built many projects with the goal of developing my skills. </p>
                         <p>All of these projects are hosted on free tiers across multiple platforms with limited lifespans and therefore may not be live.</p>
                         <p>Feel free to still view the code of each project with screenshots included in the README files.</p>
-                        <p><strong>Alex - 27/02/25</strong></p>
+                        <p><strong>Alex - 27/05/25</strong></p>
                         <button onClick={hidePopup} className="Attention-Button">OK</button>
                     </div>
                 </div>
             )}
             <div className="Top-margin">
+            </div>
+
+            <div className="Project-container-reverse">
+                <div className="Project-graphics">
+                    <div className="Project-title">
+                        Local Post 3000
+                    </div>
+                    <img src="/Mailbox.png" className="Project-image">
+                    </img>
+                    <div className="Project-buttons">
+                        <button
+                            onClick={() => window.open('https://github.com/GucciGangnam/localpost3000', '_blank')}
+                            className="Code-BTN">code</button>
+                        <button
+                            onClick={() => window.open('https://localpost3000.vercel.app', '_blank')}
+                            className="Live-BTN">Live</button>
+                    </div>
+                </div>
+                <div className="Project-description">
+                    LocalPost is a <span style={{ color: "var(--primary-text)" }}>Full Stack NextJS social media site</span> which utilises a users location to show them a unique feed of posts from their local area. This project showcases a deep understanding of NextJS, Typescript, and the use of 4rd party component and authentication libraries.
+                    <div className="Project-Technology">
+                        <img
+                            className="Project-tech-icon"
+                            src="/typescript.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/Tailwind.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/NextJS.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/PSQL.png"
+                        ></img>
+                        <img
+                            className="Project-tech-icon"
+                            src="/PSQL.png"
+                        ></img>
+                    </div>
+                </div>
             </div>
 
             <div className="Project-container">
