@@ -73,7 +73,7 @@ export const Projects = () => {
                         ></img>
                         <img
                             className="Project-tech-icon"
-                            src="/PSQL.png"
+                            src="/Vercel.png"
                         ></img>
                     </div>
                 </div>
