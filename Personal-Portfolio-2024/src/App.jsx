@@ -11,16 +11,21 @@ import { CV } from './pages/CV';
 import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
 
+const backEndURL = import.meta.env.VITE_BACKEND_URL
+
 // COMPONENT 
 function App() {
 
   const [isMobile, setIsMobile] = useState(null)
+
+
+  // Determin user device type
   useEffect(() => {
     // Function to detect device type based on user agent
     const detectDeviceType = () => {
       const userAgent = navigator.userAgent;
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-      
+
       if (isMobile) {
         console.log("Client is on a mobile device.");
         setIsMobile(true)
@@ -34,6 +39,24 @@ function App() {
     // No need for resize listener in this method
   }, []);
 
+  // Call /harvester endpoint
+  useEffect(() => {
+      fetch(`${backEndURL}/harvester`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          // Descriptive event for your server logs
+          event: "User profile session ended",
+          device: isMobile ? "mobile" : "desktop",
+        })
+      })
+        .then(response => response.text())
+        .then(data => console.log('User session data sent:', data))
+        .catch(error => console.error('Error sending session data:', error));
+
+  }, [isMobile]);
 
   // DARK MODE 
   const [isDarkMode, setIsDarkMode] = useState(false);
