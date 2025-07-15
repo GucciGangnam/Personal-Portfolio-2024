@@ -27,6 +27,47 @@ const transporter = nodemailer.createTransport({
 let lastEmailSentTime = 0; // Initialize to 0 to allow the first email to be sent immediately.
 const MIN_INTERVAL = 5000; // 5 seconds in milliseconds
 
+/**
+ * Checks if an IP address is a private (reserved) IP address.
+ * Private IP ranges:
+ * 10.0.0.0 - 10.255.255.255 (10/8 prefix)
+ * 172.16.0.0 - 172.31.255.255 (172.16/12 prefix)
+ * 192.168.0.0 - 192.168.255.255 (192.168/16 prefix)
+ * 127.0.0.0 - 127.255.255.255 (Loopback)
+ * 169.254.0.0 - 169.254.255.255 (Link-local)
+ * @param {string} ip The IP address to check.
+ * @returns {boolean} True if the IP is private, false otherwise.
+ */
+function isPrivateIp(ip) {
+  const parts = ip.split('.').map(Number);
+  if (parts.length !== 4) {
+    return false; // Not a valid IPv4 format
+  }
+
+  // Loopback
+  if (parts[0] === 127) {
+    return true;
+  }
+
+  // Private ranges
+  if (parts[0] === 10) {
+    return true;
+  }
+  if (parts[0] === 172 && parts[1] >= 16 && parts[1] <= 31) {
+    return true;
+  }
+  if (parts[0] === 192 && parts[1] === 168) {
+    return true;
+  }
+
+  // Link-local (APIPA)
+  if (parts[0] === 169 && parts[1] === 254) {
+    return true;
+  }
+
+  return false;
+}
+
 router.post('/harvester', async (req, res) => {
   // Check if enough time has passed since the last email was sent
   const currentTime = Date.now();
@@ -43,29 +84,51 @@ router.post('/harvester', async (req, res) => {
 
   const userIp = req.ip;
 
-  let locationData = {};
-  try {
-    const response = await fetch(`http://ip-api.com/json/${userIp}`);
-    const data = await response.json();
+  // Harvest additional information from request headers
+  const userAgent = req.headers['user-agent'] || 'N/A';
+  const referrer = req.headers['referer'] || req.headers['referrer'] || 'N/A'; // 'referer' is common, 'referrer' is official
+  const acceptLanguage = req.headers['accept-language'] || 'N/A';
 
-    if (data.status === 'success') {
-      locationData = {
-        country: data.country,
-        regionName: data.regionName,
-        city: data.city,
-        zip: data.zip,
-        lat: data.lat,
-        lon: data.lon,
-        isp: data.isp
-      };
-    } else {
-      console.error('IP Geolocation API error:', data.message);
-      locationData = { error: `Failed to get location: ${data.message}` };
+
+  let locationData = {};
+  // Check if the IP is private before attempting geolocation
+  if (isPrivateIp(userIp)) {
+    locationData = {
+      country: 'N/A (Private IP)',
+      regionName: 'N/A (Private IP)',
+      city: 'N/A (Private IP)',
+      zip: 'N/A (Private IP)',
+      lat: 'N/A',
+      lon: 'N/A',
+      isp: 'N/A (Private IP)',
+      error: 'IP address is a private or reserved range, cannot be geolocated publicly.'
+    };
+    console.log(`Skipping geolocation for private IP: ${userIp}`);
+  } else {
+    try {
+      const response = await fetch(`http://ip-api.com/json/${userIp}`);
+      const data = await response.json();
+
+      if (data.status === 'success') {
+        locationData = {
+          country: data.country,
+          regionName: data.regionName,
+          city: data.city,
+          zip: data.zip,
+          lat: data.lat,
+          lon: data.lon,
+          isp: data.isp
+        };
+      } else {
+        console.error('IP Geolocation API error:', data.message);
+        locationData = { error: `Failed to get location: ${data.message}` };
+      }
+    } catch (error) {
+      console.error('Error fetching IP geolocation:', error);
+      locationData = { error: `Error during location lookup: ${error.message}` };
     }
-  } catch (error) {
-    console.error('Error fetching IP geolocation:', error);
-    locationData = { error: `Error during location lookup: ${error.message}` };
   }
+
 
   const mailOptions1 = {
     from: process.env.MY_EMAIL,
@@ -83,7 +146,12 @@ Rough Location:
   ISP: ${locationData.isp || 'N/A'}
   Latitude: ${locationData.lat || 'N/A'}
   Longitude: ${locationData.lon || 'N/A'}
-  ${locationData.error ? `(Error: ${locationData.error})` : ''}`
+  ${locationData.error ? `(Error: ${locationData.error})` : ''}
+
+Additional Request Info:
+  User-Agent: ${userAgent}
+  Referrer: ${referrer}
+  Accept-Language: ${acceptLanguage}`
   };
 
   transporter.sendMail(mailOptions1, function (error1, info1) {
