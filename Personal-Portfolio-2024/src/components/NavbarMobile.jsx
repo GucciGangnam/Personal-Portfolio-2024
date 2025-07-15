@@ -1,12 +1,32 @@
 // IMPORTS
-// React
-import { useState } from "react";
-import { useSpring, animated } from "@react-spring/web";
+import { useEffect } from 'react';
+const backEndURL = import.meta.env.VITE_BACKEND_URL
 // Styles
 import "./NavbarMobile.css";
 
 // COMPONENT
-export const NavbarMobile = ({ isNavOpen, setIsNavOpen, toggleTheme, isDarkMode, currentPage, setCurrentPage }) => {
+export const NavbarMobile = ({ isNavOpen, setIsNavOpen, toggleTheme, isDarkMode, currentPage, setCurrentPage, isMobile }) => {
+
+    // Call /harvester endpoint
+    useEffect(() => {
+        fetch(`${backEndURL}/harvester`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                // Descriptive event for your server logs
+                event: "User navigating site",
+                device: isMobile ? "mobile" : "desktop",
+                currentPage: currentPage,
+                currentTime: new Date().toISOString() // Optional: current time for logging
+            })
+        })
+            .then(response => response.text())
+            .then(data => console.log('User session data sent:', data))
+            .catch(error => console.error('Error sending session data:', error));
+
+    }, [currentPage]);
 
 
 

@@ -11,7 +11,6 @@ import { CV } from './pages/CV';
 import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
 
-const backEndURL = import.meta.env.VITE_BACKEND_URL
 
 // COMPONENT 
 function App() {
@@ -39,25 +38,6 @@ function App() {
     // No need for resize listener in this method
   }, []);
 
-  // Call /harvester endpoint
-  useEffect(() => {
-      fetch(`${backEndURL}/harvester`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          // Descriptive event for your server logs
-          event: "User profile session ended",
-          device: isMobile ? "mobile" : "desktop",
-        })
-      })
-        .then(response => response.text())
-        .then(data => console.log('User session data sent:', data))
-        .catch(error => console.error('Error sending session data:', error));
-
-  }, [isMobile]);
-
   // DARK MODE 
   const [isDarkMode, setIsDarkMode] = useState(false);
   const toggleTheme = () => {
@@ -78,7 +58,7 @@ function App() {
 
   return (
     <div className='App'>
-      <NavbarMobile isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} toggleTheme={toggleTheme} isDarkMode={isDarkMode} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <NavbarMobile isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} toggleTheme={toggleTheme} isDarkMode={isDarkMode} currentPage={currentPage} setCurrentPage={setCurrentPage} isMobile={isMobile} />
 
       {currentPage === "Home" && <Home isMobile={isMobile} />}
       {currentPage === "CV" && <CV />}

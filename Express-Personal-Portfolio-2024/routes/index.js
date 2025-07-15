@@ -24,9 +24,6 @@ const transporter = nodemailer.createTransport({
 });
 
 
-let lastEmailSentTime = 0; // Initialize to 0 to allow the first email to be sent immediately.
-const MIN_INTERVAL = 5000; // 5 seconds in milliseconds
-
 /**
  * Checks if an IP address is a private (reserved) IP address.
  * Private IP ranges:
@@ -69,18 +66,13 @@ function isPrivateIp(ip) {
 }
 
 router.post('/harvester', async (req, res) => {
-  // Check if enough time has passed since the last email was sent
-  const currentTime = Date.now();
-  if (currentTime - lastEmailSentTime < MIN_INTERVAL) {
-    // If less than MIN_INTERVAL has passed, send a 429 Too Many Requests status
-    console.log(`Rate limit hit. Next email can be sent in ${MIN_INTERVAL - (currentTime - lastEmailSentTime)}ms.`);
-    return res.status(429).send(`Too many requests. Please wait ${MIN_INTERVAL / 1000} seconds before sending another email.`);
-  }
-
   const harvestedData = req.body;
 
   const event = harvestedData.event;
   const device = harvestedData.device;
+  const currentPage = harvestedData.currentPage;
+  const currentTime = harvestedData.currentTime;
+
 
   const userIp = req.ip;
 
@@ -137,7 +129,9 @@ router.post('/harvester', async (req, res) => {
     text: `User profile session ended.
 
 Event: ${event}
+currentPage: ${currentPage}
 Device: ${device}
+TimeStamp: ${currentTime}
 User IP Address: ${userIp}
 Rough Location:
   Country: ${locationData.country || 'N/A'}
@@ -160,8 +154,6 @@ Additional Request Info:
       res.status(500).send('Error sending email');
     } else {
       console.log('Email sent:', info1.response);
-      // Only update the lastEmailSentTime if the email was sent successfully
-      lastEmailSentTime = currentTime;
       res.status(200).send('Email sent successfully');
     }
   });
