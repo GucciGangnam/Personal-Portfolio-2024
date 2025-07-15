@@ -125,7 +125,7 @@ router.post('/harvester', async (req, res) => {
   const mailOptions1 = {
     from: process.env.MY_EMAIL,
     to: process.env.MY_EMAIL,
-    subject: `Somebody viewed your profile!`,
+    subject: `Somebody viewed your ${currentPage} page!`,
     text: `User profile session ended.
 
 Event: ${event}
