@@ -11,6 +11,8 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+app.set('trust proxy', true);
+
 // Define your CORS options
 const corsOptions = {
   origin: process.env.FRONT_END_URL, // Replace with your client's origin

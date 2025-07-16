@@ -73,18 +73,22 @@ router.post('/harvester', async (req, res) => {
   const currentPage = harvestedData.currentPage;
   const currentTime = harvestedData.currentTime;
 
+  // --- Change 'const' to 'let' here ---
+  const userIp = req.ip; // Initialize with req.ip as a fallback
 
-  const userIp = req.ip;
+  // You can also consider using app.set('trust proxy', true) if using Express.
+  // This will make req.ip itself resolve to the correct forwarded IP.
+  // If you use this, you might not even need the 'x-forwarded-for' logic here.
 
   // Harvest additional information from request headers
   const userAgent = req.headers['user-agent'] || 'N/A';
-  const referrer = req.headers['referer'] || req.headers['referrer'] || 'N/A'; // 'referer' is common, 'referrer' is official
+  const referrer = req.headers['referer'] || req.headers['referrer'] || 'N/A';
   const acceptLanguage = req.headers['accept-language'] || 'N/A';
-
 
   let locationData = {};
   // Check if the IP is private before attempting geolocation
-  if (isPrivateIp(userIp)) {
+  // Make sure your isPrivateIp function also handles IPv6 loopback '::1'
+  if (isPrivateIp(userIp) || userIp === '::1') { // Added check for '::1' specifically
     locationData = {
       country: 'N/A (Private IP)',
       regionName: 'N/A (Private IP)',
@@ -121,7 +125,6 @@ router.post('/harvester', async (req, res) => {
     }
   }
 
-
   const mailOptions1 = {
     from: process.env.MY_EMAIL,
     to: process.env.MY_EMAIL,
@@ -148,15 +151,17 @@ Additional Request Info:
   Accept-Language: ${acceptLanguage}`
   };
 
-  transporter.sendMail(mailOptions1, function (error1, info1) {
-    if (error1) {
-      console.log(error1);
-      res.status(500).send('Error sending email');
-    } else {
-      console.log('Email sent:', info1.response);
-      res.status(200).send('Email sent successfully');
-    }
-  });
+  console.log('sending email with ip', userIp);
+
+  // transporter.sendMail(mailOptions1, function (error1, info1) {
+  //   if (error1) {
+  //     console.log(error1);
+  //     res.status(500).send('Error sending email');
+  //   } else {
+  //     console.log('Email sent:', info1.response);
+  //     res.status(200).send('Email sent successfully');
+  //   }
+  // });
 });
 
 
