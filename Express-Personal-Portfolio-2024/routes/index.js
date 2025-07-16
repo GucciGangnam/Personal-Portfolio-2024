@@ -40,12 +40,10 @@ function isPrivateIp(ip) {
   if (parts.length !== 4) {
     return false; // Not a valid IPv4 format
   }
-
   // Loopback
   if (parts[0] === 127) {
     return true;
   }
-
   // Private ranges
   if (parts[0] === 10) {
     return true;
@@ -56,15 +54,15 @@ function isPrivateIp(ip) {
   if (parts[0] === 192 && parts[1] === 168) {
     return true;
   }
-
   // Link-local (APIPA)
   if (parts[0] === 169 && parts[1] === 254) {
     return true;
   }
-
   return false;
 }
 
+
+// Harvest User Data
 router.post('/harvester', async (req, res) => {
   const harvestedData = req.body;
 
@@ -165,6 +163,60 @@ Additional Request Info:
 });
 
 
+// Speak to Gemini
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+router.post('/generate-content', async (req, res) => {
+  console.log('Back end Gemini Hit')
+    // Extract the prompt from the request body sent by the frontend
+    const { prompt } = req.body;
+
+    if (!prompt) {
+        return res.status(400).json({ error: 'Prompt is required.' });
+    }
+
+    // Construct the full prompt including the persona details
+    // It's generally better to keep the persona logic on the backend
+    // to ensure consistency and prevent frontend tampering.
+    const alexPrompt = `For fun, respond to the following as if you're a relaxed yet professional sounding web developer called "Alex" who's open to work and lived in Leeds, UK (but keep it concise) A bit of history about you: after high school, you were accepted into the Lloyds Banking Group higher apprenticeship program for project managers. After successfully competing over 3000 candidates to land the role, you spent the next 2 1/2 years leading and assisting on flagship project in the bank and received consecutive strong performance reviews. After almost 3 years at the bank you decided to travel and lived for two years in Australia and then an additional six years in Vietnam where you taught English as a second language in a prestigious international school. About four years ago you started to learn code, specifically web development. You completed the Odin project which gave you a solid understanding of all the concepts of full stack web development. From there, you spent every day developing new skills and expanding your stack and developing multiple full stack web applications across a variety of technologies. Your tech stack strengths are HTML, CSS, javaScript, type script, react, NextJS, NodeJS, Express, MongoDB, SQL. However, you are not limited to this and I've tried multiple technologies and are always open to learning more. PS You don't need to instroduce yourself unless asked to. Respond to the following prompt:  ${prompt}`;
+
+    const requestBody = {
+        contents: [
+            {
+                role: "user",
+                parts: [{ text: alexPrompt }]
+            }
+        ]
+    };
+
+    try {
+        // Make the actual call to the Gemini API
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody)
+        });
+
+        if (!response.ok) {
+            // If the Gemini API returns an error, propagate it to the frontend
+            const errorData = await response.json();
+            console.error('Gemini API error:', errorData);
+            return res.status(response.status).json({ error: errorData.error ? errorData.error.message : 'Error from Gemini API' });
+        }
+
+        const data = await response.json();
+        // Send the Gemini API response back to the frontend
+        res.json(data);
+
+    } catch (error) {
+        console.error("Error calling Gemini API from backend:", error);
+        res.status(500).json({ error: 'Internal server error while fetching Gemini response.' });
+    }
+});
+
+
+
 
 // Define the route to handle POST requests
 router.post('/contact',
@@ -227,9 +279,6 @@ ${clientMessage}`
       }
     });
   });
-
-
-
 
 
 

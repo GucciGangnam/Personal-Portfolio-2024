@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import "./CV.css";
 
 export const CV = () => {
@@ -176,115 +176,78 @@ export const CV = () => {
     const [awaitingResponse, setAwaitingResponse] = useState(false)
     const [gptInEffect, setGptInEffect] = useState(false)
     const [geminiError, setGeminiError] = useState(false)
-    const GeminiAPIKey = import.meta.env.VITE_GEMINI_API_KEY;
+    const [openInput, setOpenInput] = useState(false);
+
     // Define the request body
     const fetchGPTResponse = async (prompt) => {
-        setGeminiError(false);
-        setGptInEffect(true);
-        setAwaitingResponse(true);
-        const alexPrompt = `For fun, respond to the following as if you're a relaxed yet professional sounding web developer called "Alex" who's open to work and lived in Leeds, UK (but keep it concise) A bit of history about you: after high school, you were accepted into the Lloyds Banking Group higher apprenticeship program for project managers. After successfully competing over 3000 candidates to land the role, you spent the next 2 1/2 years leading and assisting on flagship project in the bank and received consecutive strong performance reviews. After almost 3 years at the bank you decided to travel and lived for two years in Australia and then an additional six years in Vietnam where you taught English as a second language in a prestigious international school. About four years ago you started to learn code, specifically web development. You completed the Odin project which gave you a solid understanding of all the concepts of full stack web development. From there, you spent every day developing new skills and expanding your stack and developing multiple full stack web applications across a variety of technologies. Your tech stack strengths are HTML, CSS, javaScript, type script, react, NextJS, NodeJS, Express, MongoDB, SQL. However, you are not limited to this and I've tried multiple technologies and are always open to learning more. PS You don't need to instroduce yourself unless asked to. Respond to the following prompt:  ${prompt}`;
-        const requestBody = {
-            contents: [
-                {
-                    role: "user",
-                    parts: [{ text: alexPrompt }]
+    setGeminiError(false);
+    setGptInEffect(true);
+    setAwaitingResponse(true);
+
+    // Ensure VITE_BACKEND_URL is set in your frontend's .env file (e.g., VITE_BACKEND_URL=http://localhost:3001)
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+    // --- DEBUGGING STEP: Log the URL to see what it resolves to ---
+    console.log('Attempting to fetch from URL:', `${backendUrl}/generate-content`);
+    // --- END DEBUGGING STEP ---
+
+    const requestBody = {
+        prompt: prompt // Send only the user's prompt to the backend
+    };
+
+    // Make the API call to your backend endpoint
+    try {
+        const response = await fetch(`${backendUrl}/generate-content`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody)
+        });
+
+        if (!response.ok) {
+            // If your backend returns an error (e.g., 400, 500), throw it
+            const errorData = await response.json();
+            throw new Error(errorData.error || `Backend responded with status ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Continue with your existing logic for updating the conversation and streaming
+        setConversation(prevState => [
+            ...prevState,
+            { avatar: "/Avatar.png", message: "" }
+        ]);
+
+        let responseText = data.candidates[0].content.parts[0].text;
+        let newString = '';
+        const updateString = (i) => {
+            if (i < responseText.length) {
+                newString += responseText[i];
+                setConversation(prevState => {
+                    const newConversation = [...prevState];
+                    newConversation[newConversation.length - 1].message = newString;
+                    return newConversation;
+                });
+                let randomNumber = Math.floor(Math.random() * 10) + 1;
+                if (randomNumber % 5 === 0) {
+                    randomNumber *= 5;
                 }
-            ]
+                setTimeout(() => updateString(i + 1), randomNumber);
+            } else {
+                setHandToGPT(true);
+                setGptInEffect(false);
+            }
         };
-        // Make the API call
-        try {
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-goog-api-key": GeminiAPIKey
-                },
-                body: JSON.stringify(requestBody)
-            });
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            const data = await response.json();
-            setConversation(prevState => [
-                ...prevState,
-                { avatar: "/Avatar.png", message: "" }
-            ])
-            let responseText = data.candidates[0].content.parts[0].text
-            let newString = '';
-            const updateString = (i) => {
-                if (i < responseText.length) {
-                    newString += responseText[i];
-                    setConversation(prevState => {
-                        const newConversation = [...prevState];
-                        newConversation[newConversation.length - 1].message = newString;
-                        return newConversation;
-                    });
-                    let randomNumber = Math.floor(Math.random() * 10) + 1;
-                    if (randomNumber % 5 === 0) {
-                        randomNumber *= 5;
-                    }
-                    setTimeout(() => updateString(i + 1), randomNumber);
-                } else {
-                    setHandToGPT(true)
-                    setGptInEffect(false)
-                }
-            };
-            updateString(0);
-        } catch (error) {
-            setGeminiError(true)
-            setGptInEffect(false);
-            console.error("There was a problem with the API request:", error);
-        } finally {
-            setAwaitingResponse(false);
-        }
+        updateString(0);
+    } catch (error) {
+        setGeminiError(true);
+        setGptInEffect(false);
+        console.error("There was a problem with the API request to your backend:", error);
+    } finally {
+        setAwaitingResponse(false);
     }
-
-    // DOWNLOAD CV //
-    const [openInput, setOpenInput] = useState(false);
-    const [password, setPassword] = useState('')
-    const [incorrectPassword, setIncorrectPassword] = useState(false);
-    const [checkingPassword, setCheckingPassword] = useState(false);
-    const handldeChangePassword = (e) => {
-        setPassword(e.target.value);
-    }
-
-    const downloadCV = async () => {
-        setCheckingPassword(true)
-        setIncorrectPassword(false)
-        const backEndURL = import.meta.env.VITE_BACKEND_URL
-        try {
-            const response = await fetch(`${backEndURL}/downloadcv`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ password }),
-            });
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
-            // Assuming you want to download the file directly if successful
-            setCheckingPassword(false)
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.style.display = 'none';
-            a.href = url;
-            a.download = 'ALEX_MICKLEWRIGHT_CV.pdf';
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-            document.body.removeChild(a);
-
-        } catch (error) {
-            console.error('Error downloading CV:', error);
-            setIncorrectPassword(true);
-            setPassword('');
-            setCheckingPassword(false)
-        }
-    }
+}
 
 
 
