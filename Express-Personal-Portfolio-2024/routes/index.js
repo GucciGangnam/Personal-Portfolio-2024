@@ -153,15 +153,15 @@ Additional Request Info:
 
   console.log('sending email with ip', userIp);
 
-  // transporter.sendMail(mailOptions1, function (error1, info1) {
-  //   if (error1) {
-  //     console.log(error1);
-  //     res.status(500).send('Error sending email');
-  //   } else {
-  //     console.log('Email sent:', info1.response);
-  //     res.status(200).send('Email sent successfully');
-  //   }
-  // });
+  transporter.sendMail(mailOptions1, function (error1, info1) {
+    if (error1) {
+      console.log(error1);
+      res.status(500).send('Error sending email');
+    } else {
+      console.log('Email sent:', info1.response);
+      res.status(200).send('Email sent successfully');
+    }
+  });
 });
 
 
